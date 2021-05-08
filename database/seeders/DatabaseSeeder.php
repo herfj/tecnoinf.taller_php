@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         //PARA CUANDO TENGA RELACIONES
         //$this->call(InstituteSeeder::class);
-        Institute::factory(10)->create();
+        Institute::factory(25)->create();
     }
 }
