@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //PARA CUANDO TENGA RELACIONES
-        //$this->call(InstituteSeeder::class);
+//        $this->call(InstituteSeeder::class);
         Institute::factory(10)->create();
     }
 }
