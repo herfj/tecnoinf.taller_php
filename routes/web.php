@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+//Controladores
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CourseController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return "hola mundo";
-});
+Route::get('/', HomeController::class);
 
-Route::get('/hola/{palabra}', function ($palabra) {
-    return 'Hola ' . $palabra;
-});
+Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/courses/create', [CourseController::class, 'create']);
+Route::get('/courses/{courseIdj}', [CourseController::class, 'show']);
