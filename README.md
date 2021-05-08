@@ -1,7 +1,7 @@
 # Run project
 
 ---
-## Por primera vez
+## Mi primera vez
 
 ---
 Clona el proyecto, **renombra** el archivo **.env.example por .env**
