@@ -1,26 +1,40 @@
-# Run project 
+# Run project
 
+---
 ## Por primera vez
+
+---
 Clona el proyecto, **renombra** el archivo **.env.example por .env**
 **Corre los siguientes comandos**
 
-``` 
+```bash
 php artisan key:generate
 php artisan config:clear
 php artisan config:cache
 ``` 
  
 ## Correr el server
-``` 
+
+---
+```bash
 php artisan serve
 ``` 
- 
 #Comandos
 
-### Crear controlador
-``` 
+---
+## Crear controlador
+
+---
+```bash
 php artisan make:controller HomeController
-``` 
+```
+## Limpiar base de datos y cargar datos de prueba
+
+---
+
+```bash
+php artisan migrate:fresh --seed
+```
 
 ---
 

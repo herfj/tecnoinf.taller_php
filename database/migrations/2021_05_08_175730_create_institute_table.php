@@ -16,7 +16,7 @@ class CreateInstituteTable extends Migration
         Schema::create('institutes', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
