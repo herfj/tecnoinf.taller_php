@@ -13,6 +13,6 @@ class CourseController extends Controller
         return view('courses.create');
     }
     public function show($courseId){
-        return view('courses.show');
+        return view('courses.show',['courseId'=>$courseId]);
     }
 }

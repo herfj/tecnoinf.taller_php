@@ -9,5 +9,6 @@
 </head>
 <body>
 
+<h1><?php echo $courseId;?></h1>
 </body>
 </html>
