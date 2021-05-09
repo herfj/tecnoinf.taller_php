@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 //Controladores
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\InstituteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,15 @@ use App\Http\Controllers\CourseController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
-Route::get('/courses', [CourseController::class, 'index']);
-Route::get('/courses/create', [CourseController::class, 'create']);
-Route::get('/courses/{courseIdj}', [CourseController::class, 'show']);
+//INSTITUTES
+Route::get('institutes', [InstituteController::class, 'index'])->name('institutes.index');
+Route::get('institutes/create', [InstituteController::class, 'create'])->name('institutes.create');
+Route::post('institutes', [InstituteController::class, 'store'])->name('institutes.store');
+Route::get('institutes/{id}', [InstituteController::class, 'show'])->name('institutes.show');
+
+//COURSES
+Route::get('courses', [CourseController::class, 'index']);
+Route::get('courses/create', [CourseController::class, 'create']);
+Route::get('courses/{courseId}', [CourseController::class, 'show']);
