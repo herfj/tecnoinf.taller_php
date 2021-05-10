@@ -18,8 +18,13 @@ class InstituteController extends Controller
         $institute = new Institute();
         $institute->name=$request->name;
         $institute->description=$request->description;
-        $createdSuccess = $institute->save();
-        return redirect()->route('institutes.show',[$institute, "createdSuccess"=>$createdSuccess]);
+        $success = $institute->save();
+        if($success){
+            $mess = "El instituto <strong>".$institute->name."</strong> se creo exitosamente!" ;
+        }else{
+            $mess = "<strong>UPSS!!</strong> el instituto no se pudo crear!";
+        }
+        return redirect()->route('institutes.show',[$institute, "success"=>$success,"mess"=>$mess] );
     }
     public function show($instituteId){
         $institute = Institute::find($instituteId);

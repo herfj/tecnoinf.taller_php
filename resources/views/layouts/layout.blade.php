@@ -54,6 +54,22 @@
     </div>
 </nav>
 <div class="container" style="margin-top: 5vh">
+    <?php
+    $success = false;
+    if (isset($_REQUEST['success']) && $_REQUEST['success'] != "") {
+        $success = ($_REQUEST['success']);
+    }
+    $mess = "";
+    if (isset($_REQUEST['mess']) && $_REQUEST['mess'] != "") {
+        $mess = ($_REQUEST['mess']);
+        if($success){
+            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>". $mess."<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+        }
+    else{
+            echo "<div class='alert alert-denger alert-dismissible fade show' role='alert'>". $mess."<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+        }
+    }
+    ?>
     @yield('content')
 </div>
 <footer>
