@@ -11,6 +11,6 @@
             {{$institute->description}}
         </p>
         <a href="{{route('institutes.index')}}" class="btn btn-outline-secondary btn-sm ">Volver al listado</a>
-        <a href="{{route('institutes.index')}}" class="btn btn-outline-primary btn-sm ml-5">Editar Instituto</a>
+        <a href="{{route('institutes.edit',$institute)}}" class="btn btn-outline-primary btn-sm ml-5">Editar Instituto</a>
     </div>
 @endsection

@@ -10,11 +10,12 @@ class InstituteController extends Controller
         $institutes = Institute::all();
         return view('institutes.index', compact('institutes'));
     }
+
     public function create(){
         return view('institutes.create');
     }
-    public function store(Request $request){
 
+    public function store(Request $request){
         $institute = new Institute();
         $institute->name=$request->name;
         $institute->description=$request->description;
@@ -26,9 +27,12 @@ class InstituteController extends Controller
         }
         return redirect()->route('institutes.show',[$institute, "success"=>$success,"mess"=>$mess] );
     }
-    public function show($instituteId){
-        $institute = Institute::find($instituteId);
-        $createdSuccess = false;
+
+    public function show(Institute $institute){
         return view('institutes.show',compact('institute'));
+    }
+
+    public function edit(Institute $institute){
+        return view('institutes.edit',compact('institute'));
     }
 }
