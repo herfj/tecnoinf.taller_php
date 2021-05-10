@@ -1,3 +1,7 @@
 .bg-tomato{
-    background-color: tomato;
+     background: linear-gradient(90deg,tomato 50%,#e66465);
+}
+
+.bg-pink{
+    background: linear-gradient(#e66465, #9198e5);
 }

@@ -5,9 +5,12 @@
 
 ---
 Clona el proyecto, **renombra** el archivo **.env.example por .env**
+*EN EL .ENV CAMBIAR LAS VARIABLES SI TIENES PASSWORD!*
 **Corre los siguientes comandos**
 
 ```bash
+composer install
+composer dumpautoload -o
 php artisan key:generate
 php artisan config:clear
 php artisan config:cache
