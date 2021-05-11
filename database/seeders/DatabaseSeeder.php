@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Course_Category;
 use App\Models\Institute;
+use App\Models\Course;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,5 +20,10 @@ class DatabaseSeeder extends Seeder
         //PARA CUANDO TENGA RELACIONES
         $this->call(InstituteSeeder::class);
   //      Institute::factory(35)->create();
+        $this->call(CourseSeeder::class);
+
+        $this->call(CategorySeeder::class);
+
+        $this->call(CurCatSeeder::class);
     }
 }
