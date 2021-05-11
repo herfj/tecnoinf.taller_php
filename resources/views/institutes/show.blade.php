@@ -12,5 +12,10 @@
         </p>
         <a href="{{route('institutes.index')}}" class="btn btn-outline-secondary btn-sm ">Volver al listado</a>
         <a href="{{route('institutes.edit',$institute)}}" class="btn btn-outline-primary btn-sm ml-5">Editar Instituto</a>
+        <form action="{{route('institutes.destroy',$institute)}}" method="POST" >
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn btn-outline-danger btn-sm ml-5 mt-3"> Eliminar Instituto</button>
+        </form>
     </div>
 @endsection

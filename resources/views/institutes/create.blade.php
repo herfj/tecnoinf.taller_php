@@ -8,9 +8,17 @@
         <form action="{{route('institutes.store')}}" method="POST">
             @csrf
             <label for="name" class="form-label">Nombre del instituto</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="name" required value="{{old('name')}}">
+            @error('name')
+            <small class="text-danger">*{{$message}}</small>
+            <br>
+            @enderror
             <label for="description" class="form-label">Descripción</label>
-            <textarea type="text" class="form-control" id="description" name="description" required></textarea>
+            <textarea type="text" class="form-control" id="description" name="description" required >{{old('description')}}</textarea>
+            @error('description')
+            <small class="text-danger">*{{$message}}</small>
+            <br>
+            @enderror
             <button type="submit" class="btn btn-outline-success mt-3">Crear Instituto</button>
         </form>
     </div>
