@@ -25,3 +25,9 @@ Route::resource('institutes',InstituteController::class);
 
 //COURSES
 Route::resource('courses',InstituteController::class);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

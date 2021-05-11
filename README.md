@@ -1,3 +1,12 @@
+# Dependencias
+
+---
+* Bootstrap 5.0
+* PHP 7.4.10 (XAMPP)
+* Laravel 8 LTS
+* Composer LTS
+* NodeJS LTS
+
 # Run project
 
 ---
@@ -11,6 +20,11 @@ Clona el proyecto, **renombra** el archivo **.env.example por .env**
 ```bash
 composer install
 composer dumpautoload -o
+composer require laravel/breeze --dev
+php artisan breeze:install
+npm install
+npm run dev
+php artisan migrate
 php artisan key:generate
 php artisan config:clear
 php artisan config:cache

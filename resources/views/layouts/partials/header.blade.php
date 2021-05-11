@@ -27,8 +27,12 @@
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-danger" type="submit">Search</button>
+                <button class="btn btn-danger" type="submit">Buscar</button>
             </form>
+            @if(Auth::user())
+                <button class="btn btn-outline-primary">{{Auth::user()->name}}</button>
+
+                @endif
         </div>
     </div>
 </nav>
