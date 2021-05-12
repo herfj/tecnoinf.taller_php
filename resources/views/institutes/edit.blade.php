@@ -7,7 +7,6 @@
         <h1>Editar Instituto</h1>
         <form action="{{route('institutes.update',$institute)}}" method="POST">
             @csrf
-            @method('put')
             <label for="name" class="form-label">Nombre del instituto</label>
             <input type="text" class="form-control" id="name" name="name" required value="{{old('name',$institute->name)}}">
             @error('name')

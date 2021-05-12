@@ -25,13 +25,29 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-danger" type="submit">Buscar</button>
-            </form>
             @if(Auth::user())
-                <button class="btn btn-outline-primary">{{Auth::user()->name}}</button>
-
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                        <strong>
+                            {{Auth::user()->name}}
+                        </strong>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end mt-3">
+                        <li><a class="dropdown-item" href="#">Menu item</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Menu item</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                <button type='submit' class="dropdown-item" >Crerrar sesión</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @else
+                <a class="btn btn-outline-light " href="{{route('login')}}" role="button" style="margin-right: .5rem">Inciar sesión</a>
+                <a class="btn btn-outline-warning " href="{{route('register')}}" role="button">Registrate!</a>
                 @endif
         </div>
     </div>
