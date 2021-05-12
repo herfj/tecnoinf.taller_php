@@ -14,8 +14,8 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('nickname')->unique()->after('name');
-            $table->dateTime('birthday_date')->nullable()->after('nickname');
+            $table->string('nickname')->unique()->after('id');
+            $table->dateTime('birthday_date')->nullable()->after('name');
         });
     }
 

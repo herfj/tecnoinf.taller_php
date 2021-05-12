@@ -23,6 +23,11 @@ class InstituteSeeder extends Seeder
         $ins2 = new Institute();
         $ins2->name="UTEC";
         $ins2->description="Universidad Tecnologica del Uruguay";
-        $ins2->save();   //
+        $ins2->save();
+
+        $ins3 = new Institute();
+        $ins3->name="FMEC";
+        $ins3->description="Facultad de Medicina de la UDELAR";
+        $ins3->save();
     }
 }
