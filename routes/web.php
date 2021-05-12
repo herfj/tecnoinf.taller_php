@@ -28,6 +28,6 @@ Route::get('institutes/{institute}', [InstituteController::class, 'show'])->name
 Route::get('institutes/{institute}/edit', [InstituteController::class, 'edit'])->name('institutes.edit');
 Route::post('institutes/{institute}', [InstituteController::class, 'update'])->name('institutes.update');
 //COURSES
-Route::get('courses', [CourseController::class, 'index']);
+Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('courses/create', [CourseController::class, 'create']);
-Route::get('courses/{course}', [CourseController::class, 'show']);
+Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
