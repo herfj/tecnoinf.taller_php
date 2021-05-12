@@ -17,6 +17,10 @@ class CheckIsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(Auth::check() && Auth::user()->type_of_user==='admin'){
+            return $next($request);
+        }else{
+            abort(403);
+        }
     }
 }
