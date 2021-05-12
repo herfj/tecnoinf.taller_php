@@ -15,6 +15,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('nickname')->unique()->after('id');
+            $table->string('type_of_user')->after('name');
             $table->dateTime('birthday_date')->nullable()->after('name');
         });
     }
@@ -28,6 +29,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('nickname');
+            $table->dropColumn('type_of_user');
             $table->dropColumn('birthday_date');
         });
 
