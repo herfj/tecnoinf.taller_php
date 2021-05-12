@@ -32,6 +32,6 @@ Route::delete('institute/{institute}', [InstituteController::class,'destroy'])->
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','admin'])->name('dashboard');
 
 require __DIR__.'/auth.php';
