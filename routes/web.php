@@ -40,6 +40,10 @@ Route::get('institutes/{institute}/edit', [InstituteController::class, 'edit'])-
 Route::post('institutes/{institute}', [InstituteController::class, 'update'])->middleware(['auth','admin'])->name('institutes.update');
 Route::delete('institute/{institute}', [InstituteController::class,'destroy'])->middleware(['auth','admin'])->name('institutes.destroy');
 
+//COURSES
+Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
+Route::get('courses/create', [CourseController::class, 'create']);
+Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
