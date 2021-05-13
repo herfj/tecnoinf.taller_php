@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InstituteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,16 @@ use App\Http\Controllers\InstituteController;
 */
 
 Route::get('/', HomeController::class)->name('home');
+
+//ADMIN - USERS
+Route::get('admin/users', [UserController::class, 'index'])->middleware(['auth','admin'])->name('admin.users.index');
+Route::get('admin/users/create', [UserController::class, 'create'])->middleware(['auth','admin'])->name('admin.users.create');
+Route::post('admin/users', [UserController::class, 'store'])->middleware(['auth','admin'])->name('admin.users.store');
+Route::get('admin/users/{user}', [UserController::class, 'show'])->middleware(['auth','admin'])->name('admin.users.show');
+Route::get('admin/users/{user}/edit', [UserController::class, 'edit'])->middleware(['auth','admin'])->name('admin.users.edit');
+Route::post('admin/users/{user}', [UserController::class, 'update'])->middleware(['auth','admin'])->name('admin.users.update');
+Route::delete('admin/users/{user}', [UserController::class,'destroy'])->middleware(['auth','admin'])->name('admin.users.destroy');
+
 
 //INSTITUTES
 Route::get('institutes', [InstituteController::class, 'index'])->name('institutes.index');

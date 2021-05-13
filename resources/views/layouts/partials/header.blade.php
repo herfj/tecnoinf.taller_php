@@ -8,12 +8,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {{request()->routeIs('institutes.*') ? 'active':''}}" href="{{route('institutes.index')}}">Institutos</a>
+                    <a class="nav-link {{request()->routeIs('institutes.*') ? 'active':''}}"
+                       href="{{route('institutes.index')}}">Institutos</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown
+                        Dropdown
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -27,28 +28,32 @@
             </ul>
             @if(Auth::user())
                 <div class="btn-group">
-                    <button type="button" class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                    <button type="button" class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown"
+                            data-bs-display="static" aria-expanded="false">
                         <strong>
                             {{Auth::user()->name}}
                         </strong>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end mt-3">
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        @if(Auth::user()->type_of_user==='admin')
+                            <li><a class="dropdown-item" href="{{route('dashboard')}}">Panel de Control</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                        @endif
                         <li>
                             <form action="{{route('logout')}}" method="POST">
                                 @csrf
-                                <button type='submit' class="dropdown-item" >Crerrar sesión</button>
+                                <button type='submit' class="dropdown-item">Crerrar sesión</button>
                             </form>
                         </li>
                     </ul>
                 </div>
             @else
-                <a class="btn btn-outline-light " href="{{route('login')}}" role="button" style="margin-right: .5rem">Inciar sesión</a>
+                <a class="btn btn-outline-light " href="{{route('login')}}" role="button" style="margin-right: .5rem">Inciar
+                    sesión</a>
                 <a class="btn btn-outline-warning " href="{{route('register')}}" role="button">Registrate!</a>
-                @endif
+            @endif
         </div>
     </div>
 </nav>
