@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title',  $user->name . ' - Instituto')
+@section('title',  $user->name . ' - Usuario')
 @section('content')
 
     <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">

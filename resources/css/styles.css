@@ -5,3 +5,7 @@
 .bg-pink{
     background: linear-gradient(#e66465, #9198e5);
 }
+
+.nav-link{
+    text-transform: uppercase;
+}
