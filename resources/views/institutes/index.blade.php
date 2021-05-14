@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-grid gap-2">
-                        <a href="{{route('institutes.show',$institute->id)}}" class="btn btn-outline-dark btn-sm">Más info</a>
+                        <a href="{{route('institutes.show',$institute->id)}}" class="btn btn-outline-danger btn-sm">Más info</a>
                         </div>
                     </div>
                 </div>
