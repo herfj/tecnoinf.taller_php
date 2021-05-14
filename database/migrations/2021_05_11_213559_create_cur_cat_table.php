@@ -15,9 +15,11 @@ class CreateCurCatTable extends Migration
     {
         Schema::create('course__categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('course_id');
-            $table->integer('category_id');
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

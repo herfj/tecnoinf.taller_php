@@ -42,8 +42,11 @@ Route::delete('institute/{institute}', [InstituteController::class,'destroy'])->
 
 //COURSES
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
-Route::get('courses/create', [CourseController::class, 'create']);
+Route::get('courses/create', [CourseController::class, 'create'])->middleware(['auth','admin'])->name('courses.create');
 Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
+Route::post('courses', [CourseController::class, 'store'])->middleware(['auth','admin'])->name('courses.store');
+Route::get('courses/{course}/edit', [CourseController::class, 'edit'])->middleware(['auth','admin'])->name('courses.edit');
+Route::post('courses/{course}', [CourseController::class, 'update'])->middleware(['auth','admin'])->name('courses.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

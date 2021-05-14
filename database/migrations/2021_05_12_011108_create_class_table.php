@@ -15,10 +15,12 @@ class CreateClassTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('edition_id');
             $table->date('class_date');
             $table->string('topic');
             $table->text('class_notes');
             $table->timestamps();
+            $table->foreign('edition_id')->references('id')->on('editions');
         });
     }
 

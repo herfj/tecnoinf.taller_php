@@ -133,7 +133,7 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-green-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('admin.users.index')}}">Lista de cursos</a>
+                            <a href="{{route('courses.index')}}">Lista de cursos</a>
                         </h1>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-green-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('admin.users.create')}}">Lista de ediciones (de un Curso)</a>
+                            <a href="{{route('courses.index')}}">Lista de ediciones (de un Curso)</a>
                         </h1>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-green-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('admin.users.index')}}">Crear un curso</a>
+                            <a href="{{route('courses.create')}}">Crear un curso</a>
                         </h1>
                     </div>
                 </div>

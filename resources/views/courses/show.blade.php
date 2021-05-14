@@ -21,6 +21,7 @@
             {{$course->credits}}
         </p>
         <a href="{{route('courses.index')}}" class="btn btn-outline-secondary btn-sm ">Volver al listado</a>
+        <a href="{{route('courses.edit', $course)}}" class="btn btn-outline-secondary btn-sm ">Editar</a>
 
     </div>
 @endsection
