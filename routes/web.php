@@ -30,6 +30,12 @@ Route::get('admin/users/{user}/edit', [UserController::class, 'edit'])->middlewa
 Route::post('admin/users/{user}', [UserController::class, 'update'])->middleware(['auth','admin'])->name('admin.users.update');
 Route::delete('admin/users/{user}', [UserController::class,'destroy'])->middleware(['auth','admin'])->name('admin.users.destroy');
 
+//INVITATIONS
+Route::get('invitations', [InvitationController::class, 'index'])->middleware(['auth','teacher'])->name('invitations.index');
+Route::get('invitations/create', [InvitationController::class, 'create'])->middleware(['auth','teacher'])->name('invitations.create');
+Route::post('invitations', [InvitationController::class, 'store'])->middleware(['auth','teacher'])->name('invitations.store');
+Route::get('invitations/{institute}', [InvitationController::class, 'show'])->name('invitations.show');
+Route::delete('invitations/{institute}', [InvitationController::class,'destroy'])->middleware(['auth','teacher'])->name('invitations.destroy');
 
 //INSTITUTES
 Route::get('institutes', [InstituteController::class, 'index'])->name('institutes.index');
