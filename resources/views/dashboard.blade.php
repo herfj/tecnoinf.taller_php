@@ -5,9 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="flex flex-wrap p-4 mx-auto lg:mt-12 mr-64 ml-64">
+    <div class="flex flex-wrap p-4 mx-auto lg:mt-12 lg:mr-64 lg:ml-64">
         {{--Instutos tabla--}}
-        <div class="w-auto" style="width: 25%;">
+        <div class="w-auto" >
             <div class="rounded-md bg-blue-200 pt-4 m-2 overflow-hidden"><h1
                     class="px-3 py-2 mx-3 mb-2 font-bold text-gray-800 bg-blue-400 rounded-md">Institutos</h1>
                 <div>
@@ -46,7 +46,7 @@
         </div>
 
         {{--Usuarios tabla--}}
-        <div class="w-auto" style="width: 25%;">
+            <div class="w-auto" >
             <div class="rounded-md bg-purple-200 pt-4 m-2 overflow-hidden"><h1
                     class="px-3 py-2 mx-3 mb-2 font-bold text-gray-800 bg-purple-400 rounded-md">Usuarios</h1>
                 <div>
@@ -86,7 +86,7 @@
         </div>
 
         {{--Inscripciones tabla--}}
-        <div class="w-auto" style="width: 25%;">
+            <div class="w-auto" >
             <div class="rounded-md bg-pink-200 pt-4 m-2 overflow-hidden"><h1
                     class="px-3 py-2 mx-3 mb-2 font-bold text-gray-800 bg-pink-400 rounded-md">Inscripciones</h1>
                 <div>
@@ -126,7 +126,7 @@
         </div>
 
         {{--Cursos tabla--}}
-        <div class="w-auto" style="width: 25%;">
+            <div class="w-auto" >
             <div class="rounded-md bg-green-200 pt-4 m-2 overflow-hidden"><h1
                     class="px-3 py-2 mx-3 mb-2 font-bold text-gray-800 bg-green-400 rounded-md">Cursos</h1>
                 <div>
@@ -167,7 +167,7 @@
         </div>
 
         {{--Categorias tabla--}}
-        <div class="w-auto" style="width: 25%;">
+            <div class="w-auto" >
             <div class="rounded-md bg-yellow-200 pt-4 m-2 overflow-hidden"><h1
                     class="px-3 py-2 mx-3 mb-2 font-bold text-gray-800 bg-yellow-400 rounded-md">Categorias</h1>
                 <div>
@@ -206,7 +206,7 @@
         </div>
 
         {{--Ediciones tabla--}}
-        <div class="w-auto" style="width: 25%;">
+            <div class="w-auto" >
             <div class="rounded-md bg-red-200 pt-4 m-2 overflow-hidden"><h1
                     class="px-3 py-2 mx-3 mb-2 font-bold text-gray-800 bg-red-400 rounded-md">Ediciones</h1>
                 <div>
@@ -245,7 +245,7 @@
         </div>
 
         {{--Clases tabla--}}
-        <div class="w-auto" style="width: 25%;">
+            <div class="w-auto" >
             <div class="rounded-md bg-indigo-200 pt-4 m-2 overflow-hidden"><h1
                     class="px-3 py-2 mx-3 mb-2 font-bold text-gray-800 bg-indigo-400 rounded-md">Clases</h1>
                 <div>
