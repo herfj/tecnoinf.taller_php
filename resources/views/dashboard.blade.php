@@ -153,11 +153,12 @@
                         </h1>
                     </div>
                 </div>
+
                 <div>
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-green-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('admin.users.index')}}">Editar curso (añadir categorias)</a>
+                            <a href="{{route('courses.index')}}">Editar un curso</a>
                         </h1>
                     </div>
                 </div>
@@ -174,7 +175,7 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-yellow-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.index')}}">Lista de Categorias</a>
+                            <a href="{{route('categories.index')}}">Lista de Categorias</a>
                         </h1>
                     </div>
                 </div>
@@ -182,7 +183,7 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-yellow-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.create')}}">Crear un Categoria</a>
+                            <a href="{{route('categories.create')}}">Crear un Categoria</a>
                         </h1>
                     </div>
                 </div>
@@ -190,7 +191,7 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-yellow-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.index')}}">Editar un Categoria</a>
+                            <a href="{{route('categories.index')}}">Editar un Categoria</a>
                         </h1>
                     </div>
                 </div>
@@ -198,7 +199,7 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-yellow-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.index')}}">Eliminar un Categoria</a>
+                            <a href="{{route('categories.index')}}">Eliminar un Categoria</a>
                         </h1>
                     </div>
                 </div>

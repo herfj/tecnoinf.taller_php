@@ -13,7 +13,8 @@ class CourseController extends Controller
         return view('courses.index', compact('courses'));
     }
     public function show(Course $course){
-        return view('courses.show',compact('course'));
+        $institutes = Institute::all();
+        return view('courses.show',compact('course',), compact('institutes'));
     }
 
     public function create()
@@ -38,6 +39,7 @@ class CourseController extends Controller
             //Creacion del objeto y los guarda en BD
             $course = Course::create($request->all());
 
+
             $success = true;
             $mess = "El Curso <strong>" . $course->name . "</strong> se creo exitosamente!";
         } catch (execption $e) {
@@ -49,6 +51,7 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
+        $institutes = Institute::all();
         return view('courses.edit', compact('course'));
     }
 
@@ -68,11 +71,23 @@ class CourseController extends Controller
             $course->update($request->all());
 
             $success = true;
-            $mess = "El instituto <strong>" . $course->name . "</strong> se actualizado exitosamente!";
+            $mess = "El curso <strong>" . $course->name . "</strong> se actualizado exitosamente!";
         } catch (execption $e) {
             $success = false;
             $mess = "No se pudieron aplicar los cambios! - <strong>Error: " . $e->getMessage() . "</strong>";
         }
         return redirect()->route('courses.show', [$course, "success" => $success, "mess" => $mess]);
     }
+
+    public function destroy(Course $course){
+        $success=$course->delete();
+        if($success){
+            $mess="El curso se ha eliminado";
+        }else{
+
+            $mess="El curso no se ha podido eliminar";
+        }
+        return redirect()->route('courses.index', [ "success" => $success, "mess" => $mess]);
+    }
+
 }
