@@ -6,12 +6,6 @@
         <h1>{{$user->name}}</h1>
         <p>
             <span class="fw-bold">
-            Nickname:
-            </span>
-            {{$user->nickname}}
-        </p>
-        <p>
-            <span class="fw-bold">
             Email:
             </span>
             {{$user->email}}

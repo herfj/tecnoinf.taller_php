@@ -20,8 +20,6 @@ Clona el proyecto, **renombra** el archivo **.env.example por .env**
 ```bash
 composer install
 composer dumpautoload -o
-composer require laravel/breeze --dev
-php artisan breeze:install
 npm install
 npm run dev
 php artisan migrate

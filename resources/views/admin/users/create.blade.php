@@ -14,13 +14,6 @@
             <br>
             @enderror
 
-            <label for="nickname" class="form-label">Nickname</label>
-            <input type="text" class="form-control" id="nickname" name="nickname" required {{old('nickname')}}>
-            @error('nickname')
-            <small class="text-danger">*{{$message}}</small>
-            <br>
-            @enderror
-
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" id="email" name="email" required {{old('email')}}>
             @error('email')

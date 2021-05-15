@@ -20,12 +20,6 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <i>
-                                Nickname:
-                            </i>
-                            {{$user->nickname}}
-                        </li>
-                        <li class="list-group-item">
-                            <i>
                                 Email:
                             </i>
                             {{$user->email}}

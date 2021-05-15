@@ -29,7 +29,6 @@ class UserController extends Controller
         //Validacion de los parametros
         $request->validate([
             'name' => 'required',
-            'nickname' => 'required',
             'email' => 'required',
             'password' => 'required',
             'type_of_user' => 'required',
@@ -40,7 +39,6 @@ class UserController extends Controller
             //Creacion del objeto y los guarda en BD
             $user = User::create([
                 'name' => $request['name'],
-                'nickname' => $request['nickname'],
                 'email' => $request['email'],
                 'type_of_user' => $request['type_of_user'],
                 'birthday_date' => $request['birthday_date'],
