@@ -18,7 +18,7 @@ class CreateInvitationsTable extends Migration
             $table->string('hash')->unique();
             $table->boolean('status')->default(false);
             $table->string('email')->unique();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->nullable()->references('id')->on('users');
             $table->timestamps();
         });
