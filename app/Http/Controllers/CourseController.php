@@ -98,6 +98,12 @@ class CourseController extends Controller
                 }
             }
             if ($cats!=null){
+                $ccss = Course_Category::all();
+                foreach ($ccss as $cc){
+                    if($course->id == $cc->course_id){
+                        $cc->delete();
+                    }
+                }
 
                 foreach ($cats as $cat){
 
