@@ -36,13 +36,21 @@
             <small class="text-danger">*{{$message}}</small>
             <br>
             @enderror
-            <br>
-            <select name="institute_id" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 20%;">
+            <label for="inst" class="form-label">Instituto:</label>
+            <select name="institute_id" id="inst" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 20%;">
                 @foreach($institutes as $institute)
                     <option value="{{$institute->id}}">{{$institute->name}}</option>
                 @endforeach
             </select>
             <br>
+            <label class="form-label">Categorias:</label>
+            <br>
+            @foreach($categories as $category)
+                <input class="form-check-input" type="checkbox" name="cat[]" value="{{$category->id}}" id="{{$category->id}}">
+                <label for="{{$category->id}}">{{$category->name}}</label>
+                <br>
+            @endforeach
+
             <button type="submit" class="btn btn-outline-success mt-3">Crear Curso</button>
         </form>
     </div>

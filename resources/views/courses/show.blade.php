@@ -23,9 +23,22 @@
         <p class="card-text"> <strong>Instituto perteneciente: </strong>
             @foreach($institutes as $institute)
                 @if($institute->id == $course->institute_id)
-                    {{$institute->name}}
+                    <a href="{{route('institutes.show',$institute->id)}}">{{$institute->name}}</a>
                 @endif
             @endforeach
+        </p>
+        <p class="card-text"> <strong>Categorias: </strong>
+        <ul class="list-group list-group-flush" >
+            @foreach($categories as $cat)
+                @foreach($cur_cat as $cc)
+                    @if($cc->course_id == $course->id)
+                        @if($cc->category_id == $cat->id)
+                            <li class="list-group-item" style="background-color: transparent; width: 25%" ><a href="{{route('categories.show',$cat->id)}}">{{$cat->name}}</a></li>
+                        @endif
+                    @endif
+                @endforeach
+            @endforeach
+        </ul>
         </p>
         <a href="{{route('courses.index')}}" class="btn btn-outline-secondary btn-sm ">Volver al listado</a>
         @if(Auth::check() && Auth::user()->type_of_user==="admin")

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Course_Category;
 use App\Models\Institute;
+use App\Models\Category;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,13 +17,16 @@ class CourseController extends Controller
     }
     public function show(Course $course){
         $institutes = Institute::all();
-        return view('courses.show',compact('course',), compact('institutes'));
+        $cur_cat = Course_Category::all();
+        $categories = Category::all();
+        return view('courses.show',compact('course', 'institutes', 'cur_cat', 'categories'));
     }
 
     public function create()
     {
+        $categories = Category::all();
         $institutes = Institute::all();
-        return view('courses.create', compact('institutes'));
+        return view('courses.create', compact('institutes','categories'));
     }
 
     public function store(Request $request)
@@ -38,6 +44,16 @@ class CourseController extends Controller
         try {
             //Creacion del objeto y los guarda en BD
             $course = Course::create($request->all());
+            $cats = $request->cat;
+            if ($cats!=null){
+                foreach ($cats as $cat){
+
+                    $cur_cat[$cat] = new Course_Category();
+                    $cur_cat[$cat]->course_id = $course->id;
+                    $cur_cat[$cat]->category_id = $cat;
+                    $cur_cat[$cat]->save();
+                }
+            }
 
 
             $success = true;
@@ -51,8 +67,10 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
+        $categorias = Category::all();
         $institutes = Institute::all();
-        return view('courses.edit', compact('course'));
+        $cur_cat = Course_Category::all();
+        return view('courses.edit', compact('course', 'categorias', 'institutes', 'cur_cat'));
     }
 
     public function update(Request $request, Course $course)
@@ -69,6 +87,26 @@ class CourseController extends Controller
         try {
             //Creacion del objeto y los guarda en BD
             $course->update($request->all());
+            $cats = $request->cat;
+            $borrac = $request->borracat;
+            if($borrac!=null){
+                $ccs = Course_Category::all();
+                foreach ($ccs as $cc){
+                    if($course->id == $cc->course_id){
+                        $cc->delete();
+                    }
+                }
+            }
+            if ($cats!=null){
+
+                foreach ($cats as $cat){
+
+                    $cur_cat[$cat] = new Course_Category();
+                    $cur_cat[$cat]->course_id = $course->id;
+                    $cur_cat[$cat]->category_id = $cat;
+                    $cur_cat[$cat]->save();
+                }
+            }
 
             $success = true;
             $mess = "El curso <strong>" . $course->name . "</strong> se actualizado exitosamente!";

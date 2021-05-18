@@ -37,6 +37,23 @@
             <small class="text-danger">*{{$message}}</small>
             <br>
             @enderror
+            <label for="inst" class="form-label">Instituto:</label>
+            <select name="institute_id" id="inst" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 20%;">
+                @foreach($institutes as $institute)
+                    <option value="{{$institute->id}}">{{$institute->name}}</option>
+                @endforeach
+            </select>
+            <br>
+            <label class="form-label">Categorias: <i>(Si no se elige ninguna, permaneceran las anteriores)</i></label>
+            <br>
+            @foreach($categorias as $category)
+                <input class="form-check-input" type="checkbox" name="cat[]" value="{{$category->id}}" id="{{$category->id}}">
+                <label for="{{$category->id}}"><a href="{{route('categories.show',$category->id)}}">{{$category->name}}</a></label>
+                <br>
+            @endforeach
+            <hr>
+            <input class="form-check-input" type="checkbox" name="borracat" value="borracat" id="borracat">
+            <label for="borracat">Limpiar categorias anteriores <i>(No afectaría a las categorias que seleccione ahora)</i></label>
 
             <br>
             <button type="submit" class="btn btn-outline-success mt-3">Actualizar Curso</button>
