@@ -16,7 +16,7 @@
                        href="{{route('courses.index')}}">Cursos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{request()->routeIs('institutes.*') ? 'active':''}}"
+                    <a class="nav-link {{request()->routeIs('categories.*') ? 'active':''}}"
                        href="{{route('categories.index')}}">Categorias</a>
                 </li>
                 <li class="nav-item">
