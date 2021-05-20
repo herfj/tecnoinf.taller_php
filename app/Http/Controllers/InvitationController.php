@@ -11,7 +11,7 @@ class InvitationController extends Controller
 
     public function index()
     {
-        $invitations = Invitation::all();
+        $invitations = Invitation::paginate();
         return view('invitations.index', compact('invitations'));
     }
 
