@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InstituteController;
+use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 
@@ -63,7 +64,7 @@ Route::post('categories', [CategoryController::class, 'store'])->middleware(['au
 Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->middleware(['auth','admin'])->name('categories.edit');
 Route::post('categories/{category}', [CategoryController::class, 'update'])->middleware(['auth','admin'])->name('categories.update');
-Route::delete('category/{category}', [CategoryController::class,'destroy'])->middleware(['auth','admin'])->name('categories.destroy');
+Route::delete('categories/{category}', [CategoryController::class,'destroy'])->middleware(['auth','admin'])->name('categories.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
