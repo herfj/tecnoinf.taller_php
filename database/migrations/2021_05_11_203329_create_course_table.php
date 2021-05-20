@@ -15,12 +15,12 @@ class CreateCourseTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->integer('institute_id');
             $table->string('name')->unique();
             $table->text('description');
             $table->integer('duration_in_weeks');
             $table->integer('hours');
             $table->integer('credits');
+            $table->foreignId('institute_id')->constrained('institutes')->onDelete('cascade');
             $table->timestamps();
         });
     }

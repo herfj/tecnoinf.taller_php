@@ -19,6 +19,7 @@ class CreateClassTable extends Migration
             $table->string('topic');
             $table->text('class_notes');
             $table->timestamps();
+            $table->foreignId('edition_id')->constrained('editions')->onDelete('cascade');
         });
     }
 

@@ -13,7 +13,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{request()->routeIs('institutes.*') ? 'active':''}}"
-                       href="{{route('institutes.index')}}">Cursos</a>
+                       href="{{route('courses.index')}}">Cursos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('institutes.*') ? 'active':''}}"
+                       href="{{route('categories.index')}}">Categorias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{request()->routeIs('institutes.*') ? 'active':''}}"

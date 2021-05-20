@@ -15,12 +15,12 @@ class CreateEnrollmentTable extends Migration
     {
         Schema::create('enrollments', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id');
-            $table->integer('edition_id');
             $table->string('state');
             $table->text('description');
             $table->float('course_grade');
             $table->timestamps();
+            $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('edition_id')->constrained('editions')->onDelete('cascade');
         });
     }
 

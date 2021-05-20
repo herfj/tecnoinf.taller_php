@@ -15,13 +15,13 @@ class CreateEditionTable extends Migration
     {
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
-            $table->integer('course_id');
-            $table->integer('teacher_id');
             $table->string('name');
             $table->dateTime('start_at');
             $table->dateTime('end_at');
             $table->integer('space_available');
             $table->timestamps();
+            $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
+            $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade');
         });
     }
 

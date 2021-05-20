@@ -15,8 +15,8 @@ class CreateCurCatTable extends Migration
     {
         Schema::create('course__categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('course_id');
-            $table->integer('category_id');
+            $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
