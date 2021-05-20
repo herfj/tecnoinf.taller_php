@@ -9,6 +9,7 @@ use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\InvitationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::post('admin/users/{user}', [UserController::class, 'update'])->middleware
 Route::delete('admin/users/{user}', [UserController::class,'destroy'])->middleware(['auth','admin'])->name('admin.users.destroy');
 
 //INVITATIONS
-Route::get('invitations', [InvitationController::class, 'index'])->middleware(['auth','teacher'])->name('invitations.index');
+Route::get('invitations', [InvitationController::class, 'index'])->middleware(['auth','admin'])->name('invitations.index');
 Route::get('invitations/create', [InvitationController::class, 'create'])->middleware(['auth','teacher'])->name('invitations.create');
 Route::post('invitations', [InvitationController::class, 'store'])->middleware(['auth','teacher'])->name('invitations.store');
 Route::get('invitations/{institute}', [InvitationController::class, 'show'])->name('invitations.show');
