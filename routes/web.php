@@ -9,7 +9,6 @@ use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\InvitationController;
 
 /*
 |--------------------------------------------------------------------------
