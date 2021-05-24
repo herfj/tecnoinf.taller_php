@@ -54,6 +54,35 @@ class UserController extends Controller
         return redirect()->route('admin.users.show', [$user, "success" => $success, "mess" => $mess]);
     }
 
+    public function storeFromInvite(Request $request)
+    {
+        //Validacion de los parametros
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'type_of_user' => 'required',
+            'birthday_date' => 'required',
+        ]);
+
+        try {
+            //Creacion del objeto y los guarda en BD
+            $user = User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'type_of_user' => $request['type_of_user'],
+                'birthday_date' => $request['birthday_date'],
+                'password' => Hash::make($request['password']),
+            ]);
+
+            Auth::login($user);
+
+            return $user;
+        } catch (execption $e) {
+            return $e;
+        }
+    }
+
     public function show(User $user)
     {
         return view('admin.users.show', compact('user'));

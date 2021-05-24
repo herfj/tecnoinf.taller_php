@@ -10,7 +10,7 @@ class Invitation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'hash',
+        'id',
         'email',
         'status',
         'user_id',

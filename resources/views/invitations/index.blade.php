@@ -31,8 +31,10 @@
             <div class="row" style="height: 15vh;">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6" style="text-align: center;background: #dbdee4;border-radius: 9px;">
-                    <form action="">
-                        <input type="email" class="form-control" id="InputEmail" style="margin-top: 1%"  placeholder="Ingrese email">
+                    <form action="{{route('invitations.store')}}" method="POST">
+                        @csrf
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" style="margin-top: 1%"  placeholder="Ingrese email" required>
                         <button type="submit" style="margin-top: 1%" class="btn btn-outline-info">Enviar invitacion</button>
                     </form>
                 </div>
