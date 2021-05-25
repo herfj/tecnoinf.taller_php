@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Invitation;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
+use Closure;
+use Auth;
 
 class InvitationController extends Controller
 {
@@ -28,7 +32,7 @@ class InvitationController extends Controller
                 'email' => $request['email'],
                 'status' => false,
                 'user_id' => null,
-                'id' => md5($request['email']),
+                'hash' => md5($request['email']),
             ]);
             $success = true;
             $mess = "Se envio la invitación a <strong>" . $invitation->mail . "</strong> exitosamente!";
@@ -45,19 +49,21 @@ class InvitationController extends Controller
             return view('invitations.accept', compact('invitation'));
         }
         else{
-            abort(410);
+            abort(401);
         }
     }
 
     public function update(Request $request, Invitation $invitation)
     {
+
         //Validacion de los parametros
         $validated= $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::min(8)],
+                'password' => ['required', 'confirmed', Rules\Password::min(8)],
             'birthday_date' => 'required',
         ]);
+
+        $validated['email'] = $invitation->email;
         $validated['type_of_user'] = 'student';
 
         try {
@@ -70,10 +76,11 @@ class InvitationController extends Controller
                 'status'=>true,
             ]);
 
+//            return redirect()->route('/');
 
+            return redirect(RouteServiceProvider::HOME);
         } catch (execption $e) {
             $success = false;
         }
-        return redirect()->route('/', [$invitation, "success" => $success, "mess" => $mess]);
     }
 }

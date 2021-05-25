@@ -10,9 +10,14 @@ class Invitation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
+        'hash',
         'email',
         'status',
         'user_id',
     ];
+
+    public function  getRouteKeyName()
+    {
+        return 'hash';
+    }
 }

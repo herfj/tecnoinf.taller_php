@@ -29,7 +29,7 @@ class UserController extends Controller
         //Validacion de los parametros
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required',
             'type_of_user' => 'required',
             'birthday_date' => 'required',
@@ -54,16 +54,16 @@ class UserController extends Controller
         return redirect()->route('admin.users.show', [$user, "success" => $success, "mess" => $mess]);
     }
 
-    public function storeFromInvite(Request $request)
+    public function storeFromInvite( $request)
     {
         //Validacion de los parametros
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'type_of_user' => 'required',
-            'birthday_date' => 'required',
-        ]);
+//        $request->validate([
+//            'name' => 'required',
+//            'email' => 'required',
+//            'password' => 'required',
+//            'type_of_user' => 'required',
+//            'birthday_date' => 'required',
+//        ]);
 
         try {
             //Creacion del objeto y los guarda en BD
@@ -74,6 +74,7 @@ class UserController extends Controller
                 'birthday_date' => $request['birthday_date'],
                 'password' => Hash::make($request['password']),
             ]);
+            event(new Registered($user));
 
             Auth::login($user);
 
