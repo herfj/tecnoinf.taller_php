@@ -54,7 +54,6 @@
             @else
                 <a class="btn btn-outline-light " href="{{route('login')}}" role="button" style="margin-right: .5rem">Inciar
                     sesión</a>
-                <a class="btn btn-outline-warning " href="{{route('register')}}" role="button">Registrate!</a>
             @endif
         </div>
     </div>
