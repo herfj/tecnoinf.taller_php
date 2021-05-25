@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InstituteController;
-use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 
@@ -32,12 +31,11 @@ Route::get('admin/users/{user}/edit', [UserController::class, 'edit'])->middlewa
 Route::post('admin/users/{user}', [UserController::class, 'update'])->middleware(['auth','admin'])->name('admin.users.update');
 Route::delete('admin/users/{user}', [UserController::class,'destroy'])->middleware(['auth','admin'])->name('admin.users.destroy');
 
-//INVITATIONS
+//ADMIN - TEACHER - INVITATIONS
 Route::get('invitations', [InvitationController::class, 'index'])->middleware(['auth','admin'])->name('invitations.index');
-Route::get('invitations/create', [InvitationController::class, 'create'])->middleware(['auth','teacher'])->name('invitations.create');
 Route::post('invitations', [InvitationController::class, 'store'])->middleware(['auth','teacher'])->name('invitations.store');
-Route::get('invitations/{institute}', [InvitationController::class, 'show'])->name('invitations.show');
-Route::delete('invitations/{institute}', [InvitationController::class,'destroy'])->middleware(['auth','teacher'])->name('invitations.destroy');
+Route::get('invitations/{invitation}', [InvitationController::class, 'accept'])->name('invitations.accept');
+Route::put('invitations/{invitation}', [InvitationController::class, 'update'])->name('invitations.update');
 
 //INSTITUTES
 Route::get('institutes', [InstituteController::class, 'index'])->name('institutes.index');

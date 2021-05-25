@@ -29,7 +29,7 @@ class UserController extends Controller
         //Validacion de los parametros
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required',
             'type_of_user' => 'required',
             'birthday_date' => 'required',
@@ -52,6 +52,36 @@ class UserController extends Controller
             $mess = "No se pudo crear el usuario! - <strong>Error: " . $e->getMessage() . "</strong>";
         }
         return redirect()->route('admin.users.show', [$user, "success" => $success, "mess" => $mess]);
+    }
+
+    public function storeFromInvite( $request)
+    {
+        //Validacion de los parametros
+//        $request->validate([
+//            'name' => 'required',
+//            'email' => 'required',
+//            'password' => 'required',
+//            'type_of_user' => 'required',
+//            'birthday_date' => 'required',
+//        ]);
+
+        try {
+            //Creacion del objeto y los guarda en BD
+            $user = User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'type_of_user' => $request['type_of_user'],
+                'birthday_date' => $request['birthday_date'],
+                'password' => Hash::make($request['password']),
+            ]);
+            event(new Registered($user));
+
+            Auth::login($user);
+
+            return $user;
+        } catch (execption $e) {
+            return $e;
+        }
     }
 
     public function show(User $user)

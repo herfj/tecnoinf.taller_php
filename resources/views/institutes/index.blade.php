@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">
-        <h1>Lista de Intitutos</h1>
+        <h1>Lista de Institutos</h1>
     </div>
         <div class="row row-cols-1 row-cols-lg-4 g-4">
         @foreach($institutes as $institute)

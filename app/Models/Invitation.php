@@ -15,4 +15,9 @@ class Invitation extends Model
         'status',
         'user_id',
     ];
+
+    public function  getRouteKeyName()
+    {
+        return 'hash';
+    }
 }
