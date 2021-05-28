@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Course_Category;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -41,7 +43,9 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        return view('categories.show', compact('category'));
+        $cur_cat = Course_Category::all();
+        $courses = Course::all();
+        return view('categories.show', compact('category','cur_cat','courses'));
     }
 
     public function edit(Category $category)

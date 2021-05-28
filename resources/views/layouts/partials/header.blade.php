@@ -19,10 +19,10 @@
                     <a class="nav-link {{request()->routeIs('categories.*') ? 'active':''}}"
                        href="{{route('categories.index')}}">Categorias</a>
                 </li>
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link {{request()->routeIs('editions.*') ? 'active':''}}"--}}
-{{--                       href="{{route('editions.index')}}">Ediciones</a>--}}
-{{--                </li>--}}
+                <li class="nav-item">
+                   <a class="nav-link {{request()->routeIs('editions.*') ? 'active':''}}"
+                     href="{{route('editions.index')}}">Ediciones</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link {{request()->routeIs('institutes.*') ? 'active':''}} "
                        href="{{route('institutes.index')}}">Inscribete!</a>

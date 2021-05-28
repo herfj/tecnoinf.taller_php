@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Institute;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,8 @@ class InstituteController extends Controller
 
     public function show(Institute $institute)
     {
-        return view('institutes.show', compact('institute'));
+        $courses = Course::all();
+        return view('institutes.show', compact('institute','courses'));
     }
 
     public function edit(Institute $institute)

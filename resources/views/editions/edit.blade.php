@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">
-        <h1>Actualizar Edicion</h1>
+        <h1>Editar Edicion</h1>
         <form action="{{route('editions.update',$edition)}}" method="POST">
             @csrf
             <label for="name" class="form-label">Nombre de la edicion</label>

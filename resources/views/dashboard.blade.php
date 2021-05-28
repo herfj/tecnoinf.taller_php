@@ -26,7 +26,7 @@
                         </h1>
                     </div>
                 </div>
-                <div>
+               <!-- <div>
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-blue-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
@@ -42,6 +42,7 @@
                         </h1>
                     </div>
                 </div>
+                -->
             </div>
         </div>
 
@@ -137,7 +138,7 @@
                         </h1>
                     </div>
                 </div>
-                <div>
+            <!-- <div>
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-green-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
@@ -145,6 +146,7 @@
                         </h1>
                     </div>
                 </div>
+                -->
                 <div>
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-green-400 hover:text-gray-900">
@@ -153,7 +155,7 @@
                         </h1>
                     </div>
                 </div>
-
+            <!--
                 <div>
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-green-400 hover:text-gray-900">
@@ -162,7 +164,7 @@
                         </h1>
                     </div>
                 </div>
-
+                -->
             </div>
 
         </div>
@@ -187,6 +189,7 @@
                         </h1>
                     </div>
                 </div>
+            <!--
                 <div>
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-yellow-400 hover:text-gray-900">
@@ -203,6 +206,7 @@
                         </h1>
                     </div>
                 </div>
+                -->
             </div>
         </div>
 
@@ -214,10 +218,11 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-red-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.index')}}">Lista de Categorias</a>
+                            <a href="{{route('editions.index')}}">Lista de Ediciones</a>
                         </h1>
                     </div>
                 </div>
+            <!--
                 <div>
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-red-400 hover:text-gray-900">
@@ -242,45 +247,7 @@
                         </h1>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        {{--Clases tabla--}}
-            <div class="w-auto" >
-            <div class="rounded-md bg-indigo-200 pt-4 m-2 overflow-hidden"><h1
-                    class="px-3 py-2 mx-3 mb-2 font-bold text-gray-800 bg-indigo-400 rounded-md">Clases</h1>
-                <div>
-                    <div
-                        class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-indigo-400 hover:text-gray-900">
-                        <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.index')}}">Lista de Categorias</a>
-                        </h1>
-                    </div>
-                </div>
-                <div>
-                    <div
-                        class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-indigo-400 hover:text-gray-900">
-                        <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.create')}}">Crear un Categoria</a>
-                        </h1>
-                    </div>
-                </div>
-                <div>
-                    <div
-                        class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-indigo-400 hover:text-gray-900">
-                        <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.index')}}">Editar un Categoria</a>
-                        </h1>
-                    </div>
-                </div>
-                <div>
-                    <div
-                        class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-indigo-400 hover:text-gray-900">
-                        <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.index')}}">Eliminar un Categoria</a>
-                        </h1>
-                    </div>
-                </div>
+                -->
             </div>
         </div>
 

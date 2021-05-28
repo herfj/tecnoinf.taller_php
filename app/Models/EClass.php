@@ -9,5 +9,5 @@ class EClass extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['class_date','topic','class_notes'];
+    protected $fillable = ['class_date','topic','class_notes','edition_id'];
 }

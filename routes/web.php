@@ -10,6 +10,7 @@ use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EditionController;
+use App\Http\Controllers\EClassController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,7 @@ Route::post('categories/{category}', [CategoryController::class, 'update'])->mid
 Route::delete('categories/{category}', [CategoryController::class,'destroy'])->middleware(['auth','admin'])->name('categories.destroy');
 
 //EDICIONES
+Route::get('editions', [EditionController::class, 'index'])->name('editions.index');
 Route::post('editions/create/{course}', [EditionController::class, 'create'])->middleware(['auth','teacher'])->name('editions.create');
 Route::get('editions/{edition}', [EditionController::class, 'show'])->name('editions.show');
 Route::post('editions', [EditionController::class, 'store'])->middleware(['auth','teacher'])->name('editions.store');
@@ -74,6 +76,13 @@ Route::get('editions/{edition}/edit', [EditionController::class, 'edit'])->middl
 Route::post('editions/{edition}', [EditionController::class, 'update'])->middleware(['auth','teacher'])->name('editions.update');
 Route::delete('editions/{edition}', [EditionController::class,'destroy'])->middleware(['auth','teacher'])->name('editions.destroy');
 
+//CLASES
+Route::post('classes/create/{edition}', [EClassController::class, 'create'])->middleware(['auth','teacher'])->name('classes.create');
+Route::get('classes/{clase}', [EClassController::class, 'show'])->name('classes.show');
+Route::post('classes', [EClassController::class, 'store'])->middleware(['auth','teacher'])->name('classes.store');
+Route::get('classes/{clase}/edit', [EClassController::class, 'edit'])->middleware(['auth','teacher'])->name('classes.edit');
+Route::post('classes/{clase}', [EClassController::class, 'update'])->middleware(['auth','teacher'])->name('classes.update');
+Route::delete('classes/{clase}', [EClassController::class,'destroy'])->middleware(['auth','teacher'])->name('classes.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

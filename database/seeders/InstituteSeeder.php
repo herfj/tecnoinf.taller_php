@@ -29,5 +29,10 @@ class InstituteSeeder extends Seeder
         $ins3->name="FMEC";
         $ins3->description="Facultad de Medicina de la UDELAR";
         $ins3->save();
+
+        $ins4 = new Institute();
+        $ins4->name="LICEO 1 San Carlos";
+        $ins4->description="El liceo 1 del sanka";
+        $ins4->save();
     }
 }

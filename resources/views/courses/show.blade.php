@@ -50,22 +50,25 @@
             </form>
         @endif
 
-        @if(Auth::check() && Auth::user()->type_of_user==="teacher")
+    </div>
+
+    <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5" style="width:30%; word-break: break-all;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="background-color: transparent; text-align: center;" ><h4>Ediciones</h4></li>
+        @foreach($editions as $ed)
+            @if($ed->course_id==$course->id)
+                    <li class="list-group-item" style="background-color: transparent; text-align: center;" ><a href="{{route('editions.show',$ed->id)}}">{{$ed->name}}</a></li>
+            @endif
+        @endforeach
+            <li class="list-group-item" style="background-color: transparent; text-align: center;" >
+        @if(Auth::check() && (Auth::user()->type_of_user==="teacher" || Auth::user()->type_of_user==="admin"))
             <form action="{{route('editions.create',$course)}}" method="POST" >
                 @csrf
                 <button type="submit" class="btn btn-outline-primary btn-sm ml-5 mt-3"> Agregar edicion</button>
             </form>
         @endif
-
-    </div>
-
-    <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">
-        <div style="width:100%"><h4>Ediciones</h4></div>
-        @foreach($editions as $ed)
-            @if($ed->course_id==$course->id)
-                <a href="{{route('editions.show',$ed->id)}}">{{$ed->name}}</a>
-            @endif
-        @endforeach
+            </li>
+        </ul>
     </div>
 </div>
 @endsection

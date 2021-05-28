@@ -32,9 +32,20 @@
             <br>
             @enderror
             <input type="hidden" class="form-control" id="course_id" name="course_id" value="{{$course->id}}" required>
-            <input type="hidden" class="form-control" id="teacher_id" name="teacher_id" value="{{Auth::user()->id}}" required>
+            @if(Auth::user()->type_of_user==="admin")
+                <label for="teacher_id" class="form-label">Profesor a cargo:</label>
+                <select name="teacher_id" id="teacher_id" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 20%;">
+                    @foreach($teacher as $tc)
+                        @if($tc->type_of_user=="teacher")
+                            <option value="{{$tc->id}}">{{$tc->name}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            @elseif(Auth::user()->type_of_user==="teacher")
+                <input type="hidden" class="form-control" id="teacher_id" name="teacher_id" value="{{Auth::user()->id}}" required>
+            @endif
             <br>
-            <button type="submit" class="btn btn-outline-success mt-3">Crear curso</button>
+            <button type="submit" class="btn btn-outline-success mt-3">Crear edicion</button>
         </form>
     </div>
 @endsection

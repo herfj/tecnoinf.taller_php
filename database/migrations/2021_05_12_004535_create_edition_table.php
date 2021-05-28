@@ -16,8 +16,8 @@ class CreateEditionTable extends Migration
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->dateTime('start_at');
-            $table->dateTime('end_at');
+            $table->date('start_at');
+            $table->date('end_at');
             $table->integer('space_available');
             $table->timestamps();
             $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');

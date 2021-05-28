@@ -10,6 +10,15 @@
         <p>
             {{$institute->description}}
         </p>
+        <p class="card-text"> <strong>Cursos de {{$institute->name}}: </strong>
+        <ul class="list-group list-group-flush" >
+            @foreach($courses as $course)
+                @if($course->institute_id == $institute->id)
+                    <li class="list-group-item" style="background-color: transparent; width: 25%" ><a href="{{route('courses.show',$course->id)}}">{{$course->name}}</a></li>
+                @endif
+            @endforeach
+        </ul>
+        </p>
         <a href="{{route('institutes.index')}}" class="btn btn-outline-secondary btn-sm ">Volver al listado</a>
         @if(Auth::check() && Auth::user()->type_of_user==="admin")
         <a href="{{route('institutes.edit',$institute)}}" class="btn btn-outline-primary btn-sm ml-5">Editar Instituto</a>
