@@ -8,6 +8,7 @@ use App\Models\Institute;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Models\Edition;
 
 class CourseController extends Controller
 {
@@ -15,11 +16,13 @@ class CourseController extends Controller
         $courses = Course::all();
         return view('courses.index', compact('courses'));
     }
+
     public function show(Course $course){
         $institutes = Institute::all();
         $cur_cat = Course_Category::all();
         $categories = Category::all();
-        return view('courses.show',compact('course', 'institutes', 'cur_cat', 'categories'));
+        $editions = Edition::all();
+        return view('courses.show',compact('course', 'institutes', 'cur_cat', 'categories','editions'));
     }
 
     public function create()
@@ -45,8 +48,8 @@ class CourseController extends Controller
             //Creacion del objeto y los guarda en BD
             $course = Course::create($request->all());
             $cats = $request->cat;
-            if ($cats!=null){
-                foreach ($cats as $cat){
+            if ($cats!=null) {
+                foreach ($cats as $cat) {
 
                     $cur_cat[$cat] = new Course_Category();
                     $cur_cat[$cat]->course_id = $course->id;
@@ -54,8 +57,6 @@ class CourseController extends Controller
                     $cur_cat[$cat]->save();
                 }
             }
-
-
             $success = true;
             $mess = "El Curso <strong>" . $course->name . "</strong> se creo exitosamente!";
         } catch (execption $e) {

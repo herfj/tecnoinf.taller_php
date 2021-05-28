@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 @section('title',  $course->name . ' - Curso')
 @section('content')
-
-    <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">
+<div style="display:flex">
+    <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5" style="width:70%;margin-right:1.5%">
         <h1>{{$course->name}}</h1>
         <p class="fw-bold">
             Descripción:
@@ -50,5 +50,22 @@
             </form>
         @endif
 
+        @if(Auth::check() && Auth::user()->type_of_user==="teacher")
+            <form action="{{route('editions.create',$course)}}" method="POST" >
+                @csrf
+                <button type="submit" class="btn btn-outline-primary btn-sm ml-5 mt-3"> Agregar edicion</button>
+            </form>
+        @endif
+
     </div>
+
+    <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">
+        <div style="width:100%"><h4>Ediciones</h4></div>
+        @foreach($editions as $ed)
+            @if($ed->course_id==$course->id)
+                <a href="{{route('editions.show',$ed->id)}}">{{$ed->name}}</a>
+            @endif
+        @endforeach
+    </div>
+</div>
 @endsection

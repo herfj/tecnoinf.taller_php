@@ -9,6 +9,7 @@ use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EditionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,15 @@ Route::get('categories/{category}', [CategoryController::class, 'show'])->name('
 Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->middleware(['auth','admin'])->name('categories.edit');
 Route::post('categories/{category}', [CategoryController::class, 'update'])->middleware(['auth','admin'])->name('categories.update');
 Route::delete('categories/{category}', [CategoryController::class,'destroy'])->middleware(['auth','admin'])->name('categories.destroy');
+
+//EDICIONES
+Route::post('editions/create/{course}', [EditionController::class, 'create'])->middleware(['auth','teacher'])->name('editions.create');
+Route::get('editions/{edition}', [EditionController::class, 'show'])->name('editions.show');
+Route::post('editions', [EditionController::class, 'store'])->middleware(['auth','teacher'])->name('editions.store');
+Route::get('editions/{edition}/edit', [EditionController::class, 'edit'])->middleware(['auth','teacher'])->name('editions.edit');
+Route::post('editions/{edition}', [EditionController::class, 'update'])->middleware(['auth','teacher'])->name('editions.update');
+Route::delete('editions/{edition}', [EditionController::class,'destroy'])->middleware(['auth','teacher'])->name('editions.destroy');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
