@@ -23,10 +23,6 @@
                    <a class="nav-link {{request()->routeIs('editions.*') ? 'active':''}}"
                      href="{{route('editions.index')}}">Ediciones</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{request()->routeIs('institutes.*') ? 'active':''}} "
-                       href="{{route('institutes.index')}}">Inscribete!</a>
-                </li>
             </ul>
             @if(Auth::user())
                 <div class="btn-group">
