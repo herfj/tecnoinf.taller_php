@@ -27,7 +27,7 @@ class CourseSeeder extends Seeder
         $cur2 = new Course();
         $cur2->institute_id=2;
         $cur2->name="Programacion";
-        $cur2->description="como se hizo esta pag XD";
+        $cur2->description="como se hizo esta pag";
         $cur2->duration_in_weeks=20;
         $cur2->hours=15;
         $cur2->credits=20;
@@ -36,7 +36,7 @@ class CourseSeeder extends Seeder
         $cur3 = new Course();
         $cur3->institute_id=3;
         $cur3->name="Biologia";
-        $cur3->description="Aca se estudia la vida broder";
+        $cur3->description="Aca se estudia la vida";
         $cur3->duration_in_weeks=10;
         $cur3->hours=15;
         $cur3->credits=20;
@@ -45,7 +45,7 @@ class CourseSeeder extends Seeder
         $cur4 = new Course();
         $cur4->institute_id=4;
         $cur4->name="Musica del liceo";
-        $cur4->description="La musica del liceo pero sin ariel(osea que es mala)";
+        $cur4->description="La musica del liceo";
         $cur4->duration_in_weeks=15;
         $cur4->hours=30;
         $cur4->credits=2;
@@ -54,7 +54,7 @@ class CourseSeeder extends Seeder
         $cur5 = new Course();
         $cur5->institute_id=1;
         $cur5->name="GAL";
-        $cur5->description="Suena feo";
+        $cur5->description="Geometria algebraica lineal";
         $cur5->duration_in_weeks=40;
         $cur5->hours=70;
         $cur5->credits=50;
@@ -63,7 +63,7 @@ class CourseSeeder extends Seeder
         $cur6 = new Course();
         $cur6->institute_id=2;
         $cur6->name="Taller PHP";
-        $cur6->description="Me suena de algo";
+        $cur6->description="Esta materia";
         $cur6->duration_in_weeks=12;
         $cur6->hours=20;
         $cur6->credits=15;

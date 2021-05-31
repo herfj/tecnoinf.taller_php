@@ -22,6 +22,14 @@
             @endforeach
             </p>
             <a href="{{route('courses.show',$edition->course_id)}}" class="btn btn-outline-secondary btn-sm ">Volver al curso</a>
+
+
+                @if(Auth::check() && (Auth::user()->type_of_user==="student") && (Carbon\Carbon::now()->toDateTimeString() < $edition->start_at))
+                    <form action="{{route('enrollments.create',$edition)}}" method="GET" >
+                        @csrf
+                        <button type="submit" class="btn btn-outline-primary btn-sm ml-5 mt-3"> Solicitar inscripcion</button>
+                    </form>
+                @endif
             @if(Auth::check() && ((Auth::user()->type_of_user==="teacher" && Auth::user()->id==$edition->teacher_id) || Auth::user()->type_of_user==="admin") )
                 <a href="{{route('editions.edit',$edition)}}" class="btn btn-outline-primary btn-sm ml-5">Editar Edicion</a>
                 <form action="{{route('editions.destroy',$edition)}}" method="POST" >

@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">
-        <h1>Crear Usuario</h1>
+        <h1>Crear un Docente</h1>
         <form action="{{route('admin.users.store')}}" method="POST">
             @csrf
             <label for="name" class="form-label">Nombre del usuario</label>
@@ -27,21 +27,7 @@
             <small class="text-danger">*{{$message}}</small>
             <br>
             @enderror
-
-            <label for="type_of_user" class="form-label">Tipo de usuario</label>
-            <select type="date" class="form-control" id="type_of_user" name="type_of_user" required {{old('type_of_user')}}>
-                <option value="student">
-                    Estudiante
-                </option>
-                <option value="teacher">
-                    Docente
-                </option>
-            </select>
-            @error('type_of_user')
-            <small class="text-danger">*{{$message}}</small>
-            <br>
-            @enderror
-
+            <input type="hidden" id="type_of_user" name="type_of_user" value="teacher">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required {{old('password')}}>
             @error('password')

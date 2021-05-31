@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EditionController;
 use App\Http\Controllers\EClassController;
+use App\Http\Controllers\EnrollmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,12 @@ Route::post('classes', [EClassController::class, 'store'])->middleware(['auth','
 Route::get('classes/{clase}/edit', [EClassController::class, 'edit'])->middleware(['auth','teacher'])->name('classes.edit');
 Route::post('classes/{clase}', [EClassController::class, 'update'])->middleware(['auth','teacher'])->name('classes.update');
 Route::delete('classes/{clase}', [EClassController::class,'destroy'])->middleware(['auth','teacher'])->name('classes.destroy');
+
+//ENROLLMENT
+
+Route::get('enrollments/create/{edition}', [EnrollmentController::class, 'create'])->middleware(['auth','student'])->name('enrollments.create');
+Route::post('enrollments', [EnrollmentController::class, 'store'])->middleware(['auth','student'])->name('enrollments.store');
+Route::get('enrollments/{enrollment}', [EnrollmentController::class, 'en_state'])->name('enrollments.en_state');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -115,7 +115,7 @@ class UserController extends Controller
         return redirect()->route('admin.users.show', [$user, "success" => $success, "mess" => $mess]);
     }
 
-    public function destroy(Institute $user){
+    public function destroy(User $user){
         $success=$user->delete();
         if($success){
             $mess="El usuario se ha eliminado";

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
 use App\Models\Invitation;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -28,12 +30,14 @@ class InvitationController extends Controller
 
         try {
             //Creacion del objeto y los guarda en BD
+            $hashensen = md5($request['email']);
             $invitation = Invitation::create([
                 'email' => $request['email'],
                 'status' => false,
                 'user_id' => null,
-                'hash' => md5($request['email']),
+                'hash' => $hashensen,
             ]);
+            Mail::to($request['email'])->send(new WelcomeMail($hashensen));
             $success = true;
             $mess = "Se envio la invitación a <strong>" . $invitation->mail . "</strong> exitosamente!";
         } catch (execption $e) {

@@ -52,7 +52,7 @@
                     </ul>
                 </div>
             @else
-                <a class="btn btn-outline-light " href="{{route('login')}}" role="button" style="margin-right: .5rem">Inciar
+                <a class="btn btn-outline-light " href="{{route('login')}}" role="button" style="margin-right: .5rem">Iniciar
                     sesión</a>
             @endif
         </div>

@@ -93,5 +93,8 @@ class EditionController extends Controller
         }
         return redirect()->route('courses.index', [ "success" => $success, "mess" => $mess]);
     }
+    public function ronaldinho(Request $request){
+
+    }
 
 }

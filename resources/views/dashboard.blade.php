@@ -62,11 +62,11 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-purple-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('admin.users.create')}}">Crear un Usuario</a>
+                            <a href="{{route('admin.users.create')}}">Crear un Docente</a>
                         </h1>
                     </div>
                 </div>
-                <div>
+                <!-- <div>
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-purple-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
@@ -82,6 +82,7 @@
                         </h1>
                     </div>
                 </div>
+                -->
             </div>
 
         </div>
