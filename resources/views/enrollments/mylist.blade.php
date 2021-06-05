@@ -10,16 +10,32 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">
-                            {{$enrollment->edition_id}}
+                            {{\App\Models\Edition::find($enrollment->edition_id)->name}}
                         </h5>
+                        <hr>
                         <p class="card-text">
-                            {{$enrollment->description}}
+                            @if($enrollment->state=='en_espera')
+                                <strong>Estado:</strong> <strong class="text-warning">En espera</strong>
+                            @endif
+                            @if($enrollment->state=='aceptado')
+                                <strong>Estado:</strong> <strong class="text-success">Aceptado</strong>
+                            @endif
+                            @if($enrollment->state=='rechazado')
+                                <strong>Estado:</strong> <strong class="text-danger">Rechazado</strong>
+                            @endif
+                            <br/>
+                            <p>
+                                <strong>Nota del estado:</strong>
+                            </p>
+                            <p>
+                                {{$enrollment->state_description}}
+                            </p>
                         </p>
 
                     </div>
                     <div class="card-footer">
                         <div class="d-grid gap-2">
-                            <a href="{{route('courses.show',$enrollment->id)}}" class="btn btn-outline-danger btn-sm">Más info</a>
+                            <a href="{{route('enrollments.en_state',$enrollment->id)}}" class="btn btn-outline-danger btn-sm">Más info</a>
                         </div>
                     </div>
                 </div>

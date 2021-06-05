@@ -37,9 +37,9 @@ class EnrollmentController extends Controller
             'state' => 'required',
         ]);
 
-        $validated['state_description'] = "No ingresado";
+        $validated['state_description'] = "";
         $validated['course_grade'] = 0;
-        $validated['course_grade_description'] = "No ingresado";
+        $validated['course_grade_description'] = "";
 
         try {
             //Creacion del objeto y los guarda en BD
@@ -95,6 +95,11 @@ class EnrollmentController extends Controller
     }
     public function en_state(Enrollment $enrollment)
     {
-        return view('enrollments.en_state', compact('enrollment'));
+            if(Auth::check() && Auth::user()->id===$enrollment->student_id) {
+                return view('enrollments.en_state', compact('enrollment'));
+            }
+            else{
+                abort(403);
+            }
     }
 }
