@@ -88,6 +88,7 @@ Route::delete('classes/{clase}', [EClassController::class,'destroy'])->middlewar
 //ENROLLMENT
 
 Route::get('enrollments/create/{edition}', [EnrollmentController::class, 'create'])->middleware(['auth','student'])->name('enrollments.create');
+Route::get('enrollments/mylist', [EnrollmentController::class, 'mylist'])->middleware(['auth','student'])->name('enrollments.mylist');
 Route::post('enrollments', [EnrollmentController::class, 'store'])->middleware(['auth','student'])->name('enrollments.store');
 Route::get('enrollments/{enrollment}', [EnrollmentController::class, 'en_state'])->name('enrollments.en_state');
 

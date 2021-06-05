@@ -24,7 +24,7 @@
             <a href="{{route('courses.show',$edition->course_id)}}" class="btn btn-outline-secondary btn-sm ">Volver al curso</a>
 
 
-                @if(Auth::check() && (Auth::user()->type_of_user==="student") && (Carbon\Carbon::now()->toDateTimeString() < Carbon\Carbon::createFromFormat('Y-m-d H:m:s',$edition->start_at)))
+                @if(Auth::check() && ($edition->space_available > 0) && (Auth::user()->type_of_user==="student") && (Carbon\Carbon::now()->toDateTimeString() < Carbon\Carbon::createFromFormat('Y-m-d',$edition->start_at)))
                     <form action="{{route('enrollments.create',$edition)}}" method="GET" >
                         @csrf
                         <button type="submit" class="btn btn-outline-primary btn-sm ml-5 mt-3"> Solicitar inscripcion</button>
@@ -52,10 +52,17 @@
                         <form action="{{route('classes.create',$edition->id)}}" method="POST" >
                             @csrf
                             <button type="submit" class="btn btn-outline-primary btn-sm ml-5 mt-3"> Crear una clase</button>
-                        </form>
                     @endif
                 </li>
             </ul>
+        </div>
+        <div>
+            @if(Auth::check() && ((Auth::user()->type_of_user==="teacher" && Auth::user()->id==$edition->teacher_id) || Auth::user()->type_of_user==="admin") )
+                @foreach($enrollments as $enro)
+                    <form action="{{route('enrollments.accept')}}" method="POST" >
+                    </form>
+                @endforeach
+            @endif
         </div>
     </div>
 @endsection

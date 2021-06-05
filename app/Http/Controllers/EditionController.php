@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\Course_Category;
 use App\Models\EClass;
+use App\Models\Enrollment;
 use App\Models\Institute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -54,7 +55,8 @@ class EditionController extends Controller
         $teacher = User::all();
         $course = Course::all();
         $clases = EClass::all();
-        return view('editions.show',compact('edition','teacher','course','clases'));
+        $enrollments = Enrollment::all();
+        return view('editions.show',compact('edition','teacher','course','clases','enrollments'));
     }
 
     public function edit(Edition $edition)

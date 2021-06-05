@@ -19,7 +19,7 @@ class CreateEnrollmentTable extends Migration
             $table->text('state_description');
             $table->text('letter_of_intent');
             $table->float('course_grade');
-            $table->float('course_grade_description');
+            $table->text('course_grade_description');
             $table->timestamps();
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('edition_id')->constrained('editions')->onDelete('cascade');

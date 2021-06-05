@@ -63,7 +63,7 @@ class InvitationController extends Controller
         //Validacion de los parametros
         $validated= $request->validate([
             'name' => 'required|string|max:255',
-                'password' => ['required', 'confirmed', Rules\Password::min(8)],
+            'password' => ['required', 'confirmed', Rules\Password::min(8)],
             'birthday_date' => 'required',
         ]);
 
