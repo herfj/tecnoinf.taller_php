@@ -61,10 +61,9 @@ class EditionController extends Controller
         $user_has_enroll = false;
 
         foreach($enrollments as $enrollment) {
-            if($enrollment->edition_id==$edition->id && $enrollment->student_id==Auth::user()->id){
+            if($enrollment->edition_id==$edition->id && (Auth::check() && $enrollment->student_id==Auth::user()->id)){
              $user_has_enroll=true;
              $enroll=$enrollment;
-
             }
         }
         return view('editions.show',compact('edition','teacher','course','clases','enrollments','user_has_enroll','enroll'));

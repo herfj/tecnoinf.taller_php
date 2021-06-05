@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\EClass;
 use App\Models\Edition;
+use App\Models\Enrollment;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 use Illuminate\Support\Facades\App;
 
 class EClassController extends Controller
@@ -42,7 +44,17 @@ class EClassController extends Controller
 
         $editions = Edition::all();
         $teachers = User::all();
-        return view('classes.show',compact('clase','editions','teachers'));
+        $enrollments = Enrollment::all();
+
+        foreach($enrollments as $enrollment) {
+            if($enrollment->edition_id==$clase->edition_id && (Auth::check() && $enrollment->student_id==Auth::user()->id)){
+                return view('classes.show',compact('clase','editions','teachers'));
+            }
+        }
+        if(Auth::check() && (Auth::user()->id===Edition::find($clase->edition_id)->teacher_id)){
+            return view('classes.show',compact('clase','editions','teachers'));
+        }
+        abort(403);
     }
 
     public function edit(EClass $clase)

@@ -49,12 +49,19 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" style="background-color: transparent; text-align: center;"><h4>Clases</h4>
                 </li>
-                @foreach($clases as $cl)
-                    @if($cl->edition_id==$edition->id)
-                        <li class="list-group-item" style="background-color: transparent; text-align: center;"><a
-                                href="{{route('classes.show',$cl->id)}}">{{$cl->topic}}</a></li>
-                    @endif
-                @endforeach
+                @if(Auth::check() && (Auth::user()->id===$edition->teacher_id || ($user_has_enroll && $enroll->state==="aceptado")))
+                    @foreach($clases as $cl)
+                        @if($cl->edition_id==$edition->id)
+                            <li class="list-group-item" style="background-color: transparent; text-align: center;"><a
+                                    href="{{route('classes.show',$cl->id)}}">{{$cl->topic}}</a></li>
+                        @endif
+                    @endforeach
+                @else
+                    <li class="list-group-item" style="background-color: transparent; text-align: center;">
+                        Solo el docente a cargo y/o estudiantes de esta edicion pueden ver las clases.
+                    </li>
+                @endif
+
                 <li class="list-group-item" style="background-color: transparent; text-align: center;">
                     @if(Auth::check() && ((Auth::user()->type_of_user==="teacher" && Auth::user()->id==$edition->teacher_id) || Auth::user()->type_of_user==="admin") )
                         <form action="{{route('classes.create',$edition->id)}}" method="POST">
@@ -68,8 +75,6 @@
         <div>
             @if(Auth::check() && ((Auth::user()->type_of_user==="teacher" && Auth::user()->id==$edition->teacher_id) || Auth::user()->type_of_user==="admin") )
                 @foreach($enrollments as $enro)
-                    <form action="{{route('enrollments.accept')}}" method="POST">
-                    </form>
                 @endforeach
             @endif
         </div>
