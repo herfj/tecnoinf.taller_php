@@ -24,7 +24,7 @@
             <a href="{{route('courses.show',$edition->course_id)}}" class="btn btn-outline-secondary btn-sm ">Volver al curso</a>
 
 
-                @if(Auth::check() && (Auth::user()->type_of_user==="student") && (Carbon\Carbon::now()->toDateTimeString() < $edition->start_at))
+                @if(Auth::check() && (Auth::user()->type_of_user==="student") && (Carbon\Carbon::now()->toDateTimeString() < Carbon\Carbon::createFromFormat('Y-m-d H:m:s',$edition->start_at)))
                     <form action="{{route('enrollments.create',$edition)}}" method="GET" >
                         @csrf
                         <button type="submit" class="btn btn-outline-primary btn-sm ml-5 mt-3"> Solicitar inscripcion</button>

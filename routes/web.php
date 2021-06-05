@@ -93,6 +93,6 @@ Route::get('enrollments/{enrollment}', [EnrollmentController::class, 'en_state']
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth','admin'])->name('dashboard');
+})->middleware(['auth','teacher'])->name('dashboard');
 
 require __DIR__.'/auth.php';

@@ -33,7 +33,8 @@ class EditionController extends Controller
             'name' => 'required',
             'start_at' => 'required',
             'end_at' => 'required',
-            'space_available' => 'required',
+            'teacher_id' => 'required',
+            'course_id' => 'required',
         ]);
 
         try {

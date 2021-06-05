@@ -1,14 +1,14 @@
 @extends('layouts.layout')
-@section('title', 'Crear Curso')
+@section('title', 'Inscribirse a ')
 
 @section('content')
     <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">
-        <h1>Solicitar Inscripcion</h1>
+        <h1>Solicitar Inscripción</h1>
         <form action="{{route('enrollments.store')}}" method="POST">
             @csrf
-            <label for="description" class="form-label">Descripción</label>
-            <textarea type="text" class="form-control" id="description" name="description" required >{{old('description')}}</textarea>
-            @error('description')
+            <label for="letter_of_intent" class="form-label">Carta intención</label>
+            <textarea type="text" class="form-control" id="letter_of_intent" name="letter_of_intent" required >{{old('letter_of_intent')}}</textarea>
+            @error('letter_of_intent')
             <small class="text-danger">*{{$message}}</small>
             <br>
             @enderror

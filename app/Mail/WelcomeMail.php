@@ -30,6 +30,6 @@ class WelcomeMail extends Mailable
     public function build()
     {
         $coso = $this->hash;
-        return $this->markdown('emails.welcome',compact('coso'));
+        return $this->subject('Bienvenido a EVA')->markdown('emails.welcome',compact('coso'));
     }
 }

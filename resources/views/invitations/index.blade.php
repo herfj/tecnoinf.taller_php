@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', 'invitations')
+@section('title', 'Invitations')
 
 @section('content')
     <style>

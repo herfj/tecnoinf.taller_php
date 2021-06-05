@@ -56,15 +56,6 @@ class UserController extends Controller
 
     public function storeFromInvite( $request)
     {
-        //Validacion de los parametros
-//        $request->validate([
-//            'name' => 'required',
-//            'email' => 'required',
-//            'password' => 'required',
-//            'type_of_user' => 'required',
-//            'birthday_date' => 'required',
-//        ]);
-
         try {
             //Creacion del objeto y los guarda en BD
             $user = User::create([

@@ -1,12 +1,17 @@
 @component('mail::message')
-# Introduction
+# Bienvenido a EVA
 
-The body of your message.
+**Un docente te ha habilitado el ingreso a la plataforma!**
+<br>
+Para poder inscribirte a los cursos disponibles primero debes completar el registro.
 
-@component('mail::button', ['url' => ''])
-Tu link es: https://taller-php.herokuapp.com/invitations/{{$hash}}
+@component('mail::button', ['url' => 'http://127.0.0.1:8000/invitations/{{$hash}}'])
+COMPLETAR REGISTRO
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+Tu link es unico es: http://127.0.0.1:8000/invitations/{{$hash}}
+
+**Te esperamos!**
+<br>
+Atte el equipo de {{ config('app.name') }}.
 @endcomponent

@@ -23,6 +23,10 @@
                    <a class="nav-link {{request()->routeIs('editions.*') ? 'active':''}}"
                      href="{{route('editions.index')}}">Ediciones</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('classes.*') ? 'active':''}}"
+                       href="{{route('editions.index')}}">Clases</a>
+                </li>
             </ul>
             @if(Auth::user())
                 <div class="btn-group">
@@ -33,7 +37,7 @@
                         </strong>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end mt-3">
-                        @if(Auth::user()->type_of_user==='admin')
+                        @if(Auth::user()->type_of_user==='admin' || Auth::user()->type_of_user==='teacher')
                             <li><a class="dropdown-item" href="{{route('dashboard')}}">Panel de Control</a></li>
                             <li>
                                 <hr class="dropdown-divider">
