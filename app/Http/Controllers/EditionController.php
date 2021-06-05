@@ -86,6 +86,13 @@ class EditionController extends Controller
         return redirect()->route('editions.show', [$edition, "success" => $success, "mess" => $mess]);
     }
 
+    public function bajar_cupo($edition)
+    {
+        $ed = Edition::find($edition);
+        $ed->space_available = ($ed->space_available-1);
+        $ed->save();
+    }
+
     public function destroy(Edition $edition){
         $success=$edition->delete();
         if($success){

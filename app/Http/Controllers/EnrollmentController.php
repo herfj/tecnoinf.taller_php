@@ -53,30 +53,26 @@ class EnrollmentController extends Controller
         return redirect()->route('enrollments.en_state', [$enrollment, "success" => $success, "mess" => $mess]);
     }
 
-    public function accept(Request $request)
+    public function update(Request $request, Enrollment $enrollment)
     {
         //Validacion de los parametros
-        $validated= $request->validate([
-            'letter_of_intent' => 'required',
-            'edition_id' => 'required',
-            'student_id' => 'required',
+        $request->validate([
+            'state_description' => 'required',
             'state' => 'required',
         ]);
 
-        $validated['state_description'] = "No ingresado";
-        $validated['course_grade'] = 0;
-        $validated['course_grade_description'] = "No ingresado";
-
         try {
             //Creacion del objeto y los guarda en BD
-            $enrollment = Enrollment::create($validated);
+            $enrollment->update($request->all());
             $success = true;
-            $mess = "La Solicitud se envio exitosamente!";
-        } catch (exception $e) {
+            app('App\Http\Controllers\EditionController')->bajar_cupo($enrollment->edition_id);
+            $mess = "La inscripción se actualizó exitosamente!";
+
+        } catch (execption $e) {
             $success = false;
-            $mess = "No se enviar la solicitud";
+            $mess = "La inscripción no se actualizó!";
         }
-        return redirect()->route('enrollments.en_state', [$enrollment, "success" => $success, "mess" => $mess]);
+        return redirect()->route('editions.show', [$enrollment->edition_id, "success" => $success, "mess" => $mess]);
     }
 
     public function mylist(){
