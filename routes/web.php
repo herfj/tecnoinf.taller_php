@@ -76,6 +76,7 @@ Route::post('editions', [EditionController::class, 'store'])->middleware(['auth'
 Route::get('editions/{edition}/edit', [EditionController::class, 'edit'])->middleware(['auth','teacher'])->name('editions.edit');
 Route::post('editions/{edition}', [EditionController::class, 'update'])->middleware(['auth','teacher'])->name('editions.update');
 Route::delete('editions/{edition}', [EditionController::class,'destroy'])->middleware(['auth','teacher'])->name('editions.destroy');
+Route::get('editions/inscriptions/{edition}', [EditionController::class, 'inscriptions'])->middleware(['auth','teacher'])->name('editions.inscriptions');
 
 //CLASES
 Route::post('classes/create/{edition}', [EClassController::class, 'create'])->middleware(['auth','teacher'])->name('classes.create');
@@ -92,6 +93,7 @@ Route::get('enrollments/mylist', [EnrollmentController::class, 'mylist'])->middl
 Route::post('enrollments', [EnrollmentController::class, 'store'])->middleware(['auth','student'])->name('enrollments.store');
 Route::get('enrollments/{enrollment}', [EnrollmentController::class, 'en_state'])->name('enrollments.en_state');
 Route::post('enrollments/{enrollment}', [EnrollmentController::class, 'update'])->middleware(['auth','teacher'])->name('enrollments.update');
+Route::post('enrollments/{enrollment}', [EnrollmentController::class, 'notas'])->middleware(['auth','teacher'])->name('enrollments.notas');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

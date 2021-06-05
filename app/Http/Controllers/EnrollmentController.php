@@ -65,12 +65,37 @@ class EnrollmentController extends Controller
             //Creacion del objeto y los guarda en BD
             $enrollment->update($request->all());
             $success = true;
-            app('App\Http\Controllers\EditionController')->bajar_cupo($enrollment->edition_id);
+            $stat = $request->state;
+            if($stat == "aceptado"){
+                app('App\Http\Controllers\EditionController')->bajar_cupo($enrollment->edition_id);
+            }
             $mess = "La inscripción se actualizó exitosamente!";
 
         } catch (execption $e) {
             $success = false;
             $mess = "La inscripción no se actualizó!";
+        }
+        return redirect()->route('editions.inscriptions', [$enrollment->edition_id, "success" => $success, "mess" => $mess]);
+    }
+
+    public function notas(Request $request, Enrollment $enrollment)
+    {
+        //Validacion de los parametros
+        $request->validate([
+            'course_grade_description' => 'required',
+            'course_grade' => 'required',
+        ]);
+
+        try {
+            //Creacion del objeto y los guarda en BD
+            $enrollment->update($request->all());
+            $success = true;
+
+            $mess = "La inscripción se cerró exitosamente!";
+
+        } catch (execption $e) {
+            $success = false;
+            $mess = "La inscripción no se cerró!";
         }
         return redirect()->route('editions.show', [$enrollment->edition_id, "success" => $success, "mess" => $mess]);
     }

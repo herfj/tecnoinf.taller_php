@@ -44,6 +44,8 @@
                     @method('delete')
                     <button type="submit" class="btn btn-outline-danger btn-sm ml-5 mt-3"> Eliminar Edicion</button>
                 </form>
+                <br>
+                <a href="{{route('editions.inscriptions',$edition)}}" class="btn btn-outline-primary btn-sm ml-5">Inscripciones</a>
             @endif
         </div>
         <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5" style="width:30%; word-break: break-all">
@@ -74,46 +76,46 @@
             </ul>
         </div>
     </div>
-            @if(Auth::check() && ((Auth::user()->type_of_user==="teacher" && Auth::user()->id==$edition->teacher_id) || Auth::user()->type_of_user==="admin") )
-                <p style="background-color: transparent; text-align: center;" ><h4>Inscripciones:</h4></p>
-                <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5" style="word-break: break-all">
-                    @foreach($enrollments as $enro)
-                        @if(($enro->state == 'en_espera') && ($enro->edition_id == $edition->id))
-                            <form action="{{route('enrollments.update',$enro->id)}}" method="POST" >
-                                @csrf
-                                <strong><h4>Datos del alumno: </h4></strong>
+    @if(Auth::check() && ((Auth::user()->type_of_user==="teacher" && Auth::user()->id==$edition->teacher_id) || Auth::user()->type_of_user==="admin") )
+        <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">
+            <p class="card-text"> <h4>Alumnos inscriptos: </h4>
+            </p>
+            @foreach($enrollments as $enro)
+                @if(($enro->state == 'aceptado') && ($enro->edition_id == $edition->id) && ($enro->course_grade == 0))
+                    <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5" style="word-break: break-all">
+                        <form action="{{route('enrollments.notas',$enro->id)}}" method="POST" >
+                            @csrf
+                            <strong><h4>Datos del alumno: </h4></strong>
 
-                                    @foreach($teacher as $usr)
-                                        @if($usr->id == $enro->student_id)
-                                            <p class="card-text"> <strong>Nombre: </strong>
-                                            {{$usr->name}}</p>
+                            @foreach($teacher as $usr)
+                                @if($usr->id == $enro->student_id)
+                                    <p class="card-text"> <strong>Nombre: </strong>
+                                        {{$usr->name}}</p>
+                                    <p class="card-text"> <strong>Email: </strong>
+                                        {{$usr->email}}</p>
+                                    <label for="course_grade_description" class="form-label"><strong>Jucio final: </strong></label>
+                                    <textarea type="text" class="form-control" id="course_grade_description" name="course_grade_description" required >{{old('course_grade_description')}}</textarea>
+                                    @error('course_grade_description')
+                                    <small class="text-danger">*{{$message}}</small>
+                                    <br>
+                                    @enderror
+                                    <br>
+                                    <label for="course_grade" class="form-label">Nota final: </label>
+                                    <input type="number" step="any" min="1" max="10" class="form-control" id="course_grade" name="course_grade" required>
+                                    @error('course_grade')
+                                    <small class="text-danger">{{$message}}</small>
+                                    <br>
+                                    @enderror
+                                    <button type="submit" class="btn btn-outline-success mt-3">Enviar Juicio</button>
+                                @endif
+                            @endforeach
+                        </form>
 
-                                            <p class="card-text"> <strong>Email: </strong>
-                                            {{$usr->email}}</p>
+                    </div>
+                @endif
+            @endforeach
 
-                                            <p class="card-text"> <strong>Carta de inscripcion: <br></strong>
-                                            {{$enro->letter_of_intent}}</p>
-                                            <br>
-
-                                            <label for="state_description" class="form-label"><strong>Descripcion del estado: </strong></label>
-                                            <textarea type="text" class="form-control" id="state_description" name="state_description" required >{{old('state_description')}}</textarea>
-                                            @error('state_description')
-                                            <small class="text-danger">*{{$message}}</small>
-                                            <br>
-                                            @enderror
-                                            <br>
-                                            <select class="form-select" aria-label="Default select example" name="state">
-                                                <option value="aceptado">Aceptar</option>
-                                                <option value="rechazado">Rechazar</option>
-                                            </select>
-                                            <button type="submit" class="btn btn-outline-success mt-3">Enviar estado</button>
-                                        @endif
-                                    @endforeach
-                            </form>
-                        @endif
-                        <hr>
-                    @endforeach
-                </div>
-            @endif
+        </div>
+    @endif
 
 @endsection

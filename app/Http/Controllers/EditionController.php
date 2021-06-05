@@ -51,6 +51,12 @@ class EditionController extends Controller
         return redirect()->route('editions.show', [$edition, "success" => $success, "mess" => $mess]);
     }
 
+    public function inscriptions(Edition $edition){
+        $teacher = User::all();
+        $enrollments = Enrollment::all();
+        return view('editions.inscriptions',compact('edition','teacher','enrollments'));
+    }
+
     public function show(Edition $edition){
 
         $teacher = User::all();
