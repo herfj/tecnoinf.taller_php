@@ -36,7 +36,7 @@ Route::post('admin/users/{user}', [UserController::class, 'update'])->middleware
 Route::delete('admin/users/{user}', [UserController::class,'destroy'])->middleware(['auth','admin'])->name('admin.users.destroy');
 
 //ADMIN - TEACHER - INVITATIONS
-Route::get('invitations', [InvitationController::class, 'index'])->middleware(['auth','admin'])->name('invitations.index');
+Route::get('invitations', [InvitationController::class, 'index'])->middleware(['auth','teacher'])->name('invitations.index');
 Route::post('invitations', [InvitationController::class, 'store'])->middleware(['auth','teacher'])->name('invitations.store');
 Route::get('invitations/{invitation}', [InvitationController::class, 'accept'])->name('invitations.accept');
 Route::put('invitations/{invitation}', [InvitationController::class, 'update'])->name('invitations.update');
