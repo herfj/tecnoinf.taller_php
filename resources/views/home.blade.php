@@ -47,9 +47,9 @@
                         <div class="carousel-item active" data-bs-interval="10000">
                             <img src="{{asset('slides/cosito.png')}}" class="d-block w-1" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5><a href="{{route('editions.show',$ed->id)}}" style="color: #1a202c">{{$ed->name}}</a></h5>
+                                <h5>{{$cu->name}}</h5>
                                 <br>
-                                <p>{{$cu->description}}</p>
+                                <p><a href="{{route('editions.show',$ed->id)}}" style="color: #1a202c">{{$ed->name}}</a></p>
                             </div>
                         </div>
                             <?php
@@ -59,9 +59,9 @@
                             <div class="carousel-item" data-bs-interval="10000">
                                 <img src="{{asset('slides/cosito.png')}}" class="d-block w-1" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5><a href="{{route('editions.show',$ed->id)}}" style="color: #1a202c">{{$ed->name}}</a></h5>
+                                    <h5>{{$cu->name}}</h5>
                                     <br>
-                                    <p>{{$cu->description}}</p>
+                                    <p><a href="{{route('editions.show',$ed->id)}}" style="color: #1a202c">{{$ed->name}}</a></p>
                                 </div>
                             </div>
                     @endif
