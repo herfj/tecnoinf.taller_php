@@ -1,11 +1,14 @@
 .bg-tomato{
-     background: linear-gradient(90deg,tomato 50%,#e66465);
+    background: linear-gradient(90deg,tomato 50%,#e66465);
 }
-
 .bg-pink{
     background: linear-gradient(#e66465, #9198e5);
 }
-
 .nav-link{
     text-transform: uppercase;
+}
+
+.flex{
+    display:flex;
+    flex-wrap:wrap;
 }
