@@ -11,6 +11,7 @@
             @if(($enro->state == 'en_espera') && ($enro->edition_id == $edition->id))
                 <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5" style="word-break: break-all">
                 <form action="{{route('enrollments.update',$enro->id)}}" method="POST" >
+                    @method('PUT')
                     @csrf
                     <strong><h4>Datos del alumno: </h4></strong>
 

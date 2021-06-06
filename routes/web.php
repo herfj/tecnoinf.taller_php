@@ -92,7 +92,7 @@ Route::get('enrollments/create/{edition}', [EnrollmentController::class, 'create
 Route::get('enrollments/mylist', [EnrollmentController::class, 'mylist'])->middleware(['auth','student'])->name('enrollments.mylist');
 Route::post('enrollments', [EnrollmentController::class, 'store'])->middleware(['auth','student'])->name('enrollments.store');
 Route::get('enrollments/{enrollment}', [EnrollmentController::class, 'en_state'])->name('enrollments.en_state');
-Route::post('enrollments/{enrollment}', [EnrollmentController::class, 'update'])->middleware(['auth','teacher'])->name('enrollments.update');
+Route::put('enrollments/{enrollment}', [EnrollmentController::class, 'update'])->middleware(['auth','teacher'])->name('enrollments.update');
 Route::post('enrollments/{enrollment}', [EnrollmentController::class, 'notas'])->middleware(['auth','teacher'])->name('enrollments.notas');
 
 Route::get('/dashboard', function () {
