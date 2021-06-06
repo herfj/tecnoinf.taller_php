@@ -49,7 +49,7 @@
                                 <div class="carousel-item active" data-bs-interval="7500">
                                     <img src="{{asset('slides/cosito.png')}}" class="d-block w-1" alt="...">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>{{$cu->name}}</h5>
+                                        <h5><a href="{{route('courses.show',$cu->id)}}" style="color: #1a202c">Más info</a></h5>
                                         <br>
                                         <p><a href="{{route('editions.show',$ed->id)}}" style="color: #1a202c">{{$ed->name}}</a></p>
                                     </div>
@@ -61,7 +61,7 @@
                                 <div class="carousel-item" data-bs-interval="7500">
                                     <img src="{{asset('slides/cosito.png')}}" class="d-block w-1" alt="...">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>{{$cu->name}}</h5>
+                                        <h5><a href="{{route('courses.show',$cu->id)}}" style="color: #1a202c">Más info</a></h5>
                                         <br>
                                         <p><a href="{{route('editions.show',$ed->id)}}" style="color: #1a202c">{{$ed->name}}</a></p>
                                     </div>
