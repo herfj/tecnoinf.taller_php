@@ -4,9 +4,10 @@
 @section('content')
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-<h1>Bienvenido a EVA</h1>
-<div style="display:flex;align-items: flex-start">
+    <div style="width: 100%;text-align: center;align-items: center;margin-bottom: 5%">
+    <h1>Bienvenido a EVA</h1>
+    </div>
+<div style="display:flex;flex-wrap:wrap;align-items: center;text-align: center;">
     @foreach($courses as $cu)
         <?php
             $h=0
@@ -19,7 +20,7 @@
             @endif
         @endforeach
     @if($h==1)
-    <div id="{{$cu->id}}" class="carousel carousel-dark slide" data-bs-ride="carousel" style="height:15%;width:28%;margin-right: 1.3%">
+    <div id="{{$cu->id}}" class="carousel carousel-dark slide" data-bs-ride="carousel" style="height:15%;width:28%;margin-right: 1.3%;margin-bottom: 2%">
         <div class="carousel-indicators">
             <?php
             $j=0;
