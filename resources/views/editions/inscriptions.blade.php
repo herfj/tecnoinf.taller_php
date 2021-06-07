@@ -5,6 +5,7 @@
     <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5">
         <h1>Lista de inscripciones</h1>
     </div>
+    <a href="{{route('editions.show',$edition->id)}}" class="btn btn-outline-secondary btn-sm " style="margin-left: 4%;">Volver a la edicion</a>
     @if(Auth::check() && ((Auth::user()->type_of_user==="teacher" && Auth::user()->id==$edition->teacher_id) || Auth::user()->type_of_user==="admin") )
 
         @foreach($enrollments as $enro)

@@ -45,7 +45,24 @@
                     <button type="submit" class="btn btn-outline-danger btn-sm ml-5 mt-3"> Eliminar Edicion</button>
                 </form>
                 <br>
-                <a href="{{route('editions.inscriptions',$edition)}}" class="btn btn-outline-primary btn-sm ml-5">Inscripciones</a>
+                @php
+                  $flag = 0;
+                @endphp
+                @foreach($enrollments as $enr)
+                    @if($enr->edition_id == $edition->id && $enr->state == 'en_espera')
+                        @php
+                            $flag = 1;
+                        @endphp
+                    @endif
+                @endforeach
+                @if($flag == 1)
+                    <a href="{{route('editions.inscriptions',$edition)}}" class="btn btn-outline-primary btn-sm ml-5">Inscripciones</a>
+                    @elseif($flag == 0)
+                    <i>(No hay inscripciones pendientes.)</i>
+                @endif
+
+
+
             @endif
         </div>
         <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5" style="width:30%; word-break: break-all">
