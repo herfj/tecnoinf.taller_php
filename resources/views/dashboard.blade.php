@@ -74,7 +74,7 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-purple-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('institutes.index')}}">Invitar a un estudiante</a>
+                            <a href="{{route('invitations.index')}}">Invitar a un estudiante</a>
                         </h1>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-pink-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('admin.users.index')}}">Lista de Inscripciones por Edicion</a>
+                            <a href="{{route('editions.index')}}">Lista de Inscripciones por Edicion</a>
                         </h1>
                     </div>
                 </div>
@@ -116,24 +116,8 @@
                     <div
                         class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-pink-400 hover:text-gray-900">
                         <h1 class="flex-1 text-sm">
-                            <a href="{{route('admin.users.index')}}">Actualizar estado de inscripcion (Acep. o
+                            <a href="{{route('editions.index')}}">Actualizar estado de inscripcion (Acep. o
                                 Recha.)</a>
-                        </h1>
-                    </div>
-                </div>
-                <div>
-                    <div
-                        class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-pink-400 hover:text-gray-900">
-                        <h1 class="flex-1 text-sm">
-                            <a href="{{route('admin.users.create')}}">Editar una inscripcion</a>
-                        </h1>
-                    </div>
-                </div>
-                <div>
-                    <div
-                        class="flex items-center px-3 py-2 text-gray-700 border-gray-300 cursor-pointer hover:bg-pink-400 hover:text-gray-900">
-                        <h1 class="flex-1 text-sm">
-                            <a href="{{route('admin.users.index')}}">Eliminar un Inscripcion</a>
                         </h1>
                     </div>
                 </div>

@@ -59,9 +59,10 @@ class CourseController extends Controller
             }
             $success = true;
             $mess = "El Curso <strong>" . $course->name . "</strong> se creo exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudo crear el curso! - <strong>Error: " . $e->getMessage() . "</strong>";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('courses.show', [$course, "success" => $success, "mess" => $mess]);
     }
@@ -117,9 +118,11 @@ class CourseController extends Controller
 
             $success = true;
             $mess = "El curso <strong>" . $course->name . "</strong> se actualizado exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudieron aplicar los cambios! - <strong>Error: " . $e->getMessage() . "</strong>";
+
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('courses.show', [$course, "success" => $success, "mess" => $mess]);
     }

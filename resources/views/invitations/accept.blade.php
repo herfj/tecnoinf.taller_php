@@ -17,7 +17,7 @@
             <br>
             @enderror
             <label for="birthday_date" class="form-label">Fecha de nac.</label>
-                <input type="date" class="form-control" id="birthday_date" name="birthday_date" required {{old('birthday_date', date('m-d-Y'))}}>
+                <input type="date" class="form-control" id="birthday_date" name="birthday_date" required {{old('birthday_date', date('m/d/Y'))}}>
             @error('birthday_date')
             <small class="text-danger">*{{$message}}</small>
             <br>

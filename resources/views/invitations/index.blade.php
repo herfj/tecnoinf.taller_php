@@ -63,7 +63,12 @@
                 @foreach($invitations as $singleinvitation)
                 <div class="row "style=" background: white"onmouseover="this.style.background='#C8D1E6';" onmouseout="this.style.background='white';">
                     <div class="col-1"></div>
-                    <div class="col-1"><p class="lead">{{$singleinvitation->email}}</p></div>
+                    @if($singleinvitation->user_id)
+
+                        <div class="col-1"><a href="{{route('admin.users.show', $singleinvitation->user_id)}}"><p class="lead">{{$singleinvitation->email}}</p></a></div>
+                        @else
+                        <div class="col-1"><p class="lead">{{$singleinvitation->email}}</p></div>
+                        @endif
                     <div class="col-8"></div>
                     <div class="col-1" style="">
                         <div class="d{{$singleinvitation->status}}" id="{{$singleinvitation->status}}"style="margin-top: 15%"></div>

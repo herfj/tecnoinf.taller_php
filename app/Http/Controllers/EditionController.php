@@ -44,9 +44,10 @@ class EditionController extends Controller
             $edition = Edition::create($request->all());
             $success = true;
             $mess = "La Edicion <strong>" . $edition->name . "</strong> se creo exitosamente!";
-        } catch (exception $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudo crear la edicion! - <strong>Error: " . $e->getMessage() . "</strong>";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('editions.show', [$edition, "success" => $success, "mess" => $mess]);
     }
@@ -95,9 +96,10 @@ class EditionController extends Controller
             $edition->update($request->all());
             $success = true;
             $mess = "La edicion <strong>" . $edition->name . "</strong> se actualizado exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudieron aplicar los cambios! - <strong>Error: " . $e->getMessage() . "</strong>";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('editions.show', [$edition, "success" => $success, "mess" => $mess]);
     }

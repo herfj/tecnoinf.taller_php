@@ -33,9 +33,12 @@ class EClassController extends Controller
             $clase = EClass::create($request->all());
             $success = true;
             $mess = "La clase con el topico <strong>" . $clase->topic . "</strong> se creo exitosamente!";
-        } catch (exception $e) {
+
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudo crear la clase! - <strong>Error: " . $e->getMessage() . "</strong>";
+
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('classes.show', [$clase, "success" => $success, "mess" => $mess]);
     }
@@ -76,9 +79,11 @@ class EClassController extends Controller
             $clase->update($request->all());
             $success = true;
             $mess = "La clase <strong>" . $clase->topic . "</strong> se actualizado exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudieron aplicar los cambios! - <strong>Error: " . $e->getMessage() . "</strong>";
+
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('classes.show', [$clase, "success" => $success, "mess" => $mess]);
     }

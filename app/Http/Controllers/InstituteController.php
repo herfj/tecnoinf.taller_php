@@ -33,9 +33,10 @@ class InstituteController extends Controller
 
             $success = true;
             $mess = "El instituto <strong>" . $institute->name . "</strong> se creo exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudo crear el instituto! - <strong>Error: " . $e->getMessage() . "</strong>";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('institutes.show', [$institute, "success" => $success, "mess" => $mess]);
     }
@@ -65,9 +66,10 @@ class InstituteController extends Controller
 
             $success = true;
             $mess = "El instituto <strong>" . $institute->name . "</strong> se actualizado exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudieron aplicar los cambios! - <strong>Error: " . $e->getMessage() . "</strong>";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('institutes.show', [$institute, "success" => $success, "mess" => $mess]);
     }

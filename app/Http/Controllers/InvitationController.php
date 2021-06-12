@@ -40,9 +40,10 @@ class InvitationController extends Controller
             Mail::to($request['email'])->send(new WelcomeMail($hashensen));
             $success = true;
             $mess = "Se envio la invitación a <strong>" . $invitation->mail . "</strong> exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudo crear la invitación! - <strong>Error: " . $e->getMessage() . "</strong>";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('invitations.index', [$invitation, "success" => $success, "mess" => $mess]);
     }
@@ -83,8 +84,10 @@ class InvitationController extends Controller
 //            return redirect()->route('/');
 
             return redirect(RouteServiceProvider::HOME);
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
+
+            return redirect()->route('home', [ "success" => false, "mess" =>"Upss! Algo paso, no se pudo realizar la peticion"]);
         }
     }
 }

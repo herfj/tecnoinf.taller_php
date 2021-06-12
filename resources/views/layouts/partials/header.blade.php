@@ -23,14 +23,16 @@
                    <a class="nav-link {{request()->routeIs('editions.*') ? 'active':''}}"
                      href="{{route('editions.index')}}">Ediciones</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{request()->routeIs('classes.*') ? 'active':''}}"
-                       href="{{route('editions.index')}}">Clases</a>
-                </li>
                 @if(Auth::check() && Auth::user()->type_of_user==='student')
                     <li class="nav-item">
                         <a class="nav-link {{request()->routeIs('enrollments.*') ? 'active':''}}"
                            href="{{route('enrollments.mylist')}}">Mis inscripciones</a>
+                    </li>
+                @endif
+                @if(Auth::check() && (Auth::user()->type_of_user==='admin' || Auth::user()->type_of_user==='teacher'))
+                    <li class="nav-item">
+                        <a class="nav-link {{request()->routeIs('dashboard') ? 'active':''}}"
+                           href="{{route('dashboard')}}">Panel de Control</a>
                     </li>
                 @endif
             </ul>

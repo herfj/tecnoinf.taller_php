@@ -34,9 +34,11 @@ class CategoryController extends Controller
 
             $success = true;
             $mess = "La categoria <strong>" . $category->name . "</strong> se creo exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudo crear la categoria! - <strong>Error: " . $e->getMessage() . "</strong>";
+
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('categories.show', [$category, "success" => $success, "mess" => $mess]);
     }
@@ -67,9 +69,11 @@ class CategoryController extends Controller
 
             $success = true;
             $mess = "La categoria <strong>" . $category->name . "</strong> se actualizado exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudieron aplicar los cambios! - <strong>Error: " . $e->getMessage() . "</strong>";
+
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('categories.show', [$category, "success" => $success, "mess" => $mess]);
     }

@@ -46,9 +46,10 @@ class EnrollmentController extends Controller
             $enrollment = Enrollment::create($validated);
             $success = true;
             $mess = "La Solicitud se envio exitosamente!";
-        } catch (exception $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se enviar la solicitud";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('enrollments.en_state', [$enrollment, "success" => $success, "mess" => $mess]);
     }
@@ -71,9 +72,10 @@ class EnrollmentController extends Controller
             }
             $mess = "La inscripción se actualizó exitosamente!";
 
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "La inscripción no se actualizó!";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('editions.inscriptions', [$enrollment->edition_id, "success" => $success, "mess" => $mess]);
     }
@@ -93,9 +95,10 @@ class EnrollmentController extends Controller
 
             $mess = "La inscripción se cerró exitosamente!";
 
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "La inscripción no se cerró!";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('editions.show', [$enrollment->edition_id, "success" => $success, "mess" => $mess]);
     }

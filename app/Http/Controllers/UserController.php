@@ -47,9 +47,10 @@ class UserController extends Controller
 
             $success = true;
             $mess = "El usuario <strong>" . $user->name . "</strong> se creo exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudo crear el usuario! - <strong>Error: " . $e->getMessage() . "</strong>";
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('admin.users.show', [$user, "success" => $success, "mess" => $mess]);
     }
@@ -70,7 +71,7 @@ class UserController extends Controller
             Auth::login($user);
 
             return $user;
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             return $e;
         }
     }
@@ -99,9 +100,11 @@ class UserController extends Controller
 
             $success = true;
             $mess = "El usuario <strong>" . $user->name . "</strong> se actualizado exitosamente!";
-        } catch (execption $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $success = false;
             $mess = "No se pudieron aplicar los cambios! - <strong>Error: " . $e->getMessage() . "</strong>";
+
+            return redirect()->route('home', [ "success" => $success, "mess" => $mess]);
         }
         return redirect()->route('admin.users.show', [$user, "success" => $success, "mess" => $mess]);
     }
