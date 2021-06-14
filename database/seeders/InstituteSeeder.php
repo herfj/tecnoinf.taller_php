@@ -31,8 +31,13 @@ class InstituteSeeder extends Seeder
         $ins3->save();
 
         $ins4 = new Institute();
-        $ins4->name="LICEO 1 San Carlos";
-        $ins4->description="El liceo 1 del sanka";
+        $ins4->name="FHUM";
+        $ins4->description="Facultad de Humanidades y Ciencias de la Educación";
         $ins4->save();
+
+        $ins5 = new Institute();
+        $ins5->name="CURE";
+        $ins5->description="Sede en Maldonado";
+        $ins5->save();
     }
 }

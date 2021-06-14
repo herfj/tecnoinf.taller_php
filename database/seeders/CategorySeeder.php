@@ -27,17 +27,22 @@ class CategorySeeder extends Seeder
 
         $cat3 = new Category();
         $cat3->name="Ciencias Sociales";
-        $cat3->description="Estudio de las ciecias sociales";
+        $cat3->description="Estudio de las ciencias sociales";
         $cat3->save();
 
         $cat4 = new Category();
-        $cat4->name="Categoria Especial";
-        $cat4->description="Especial";
+        $cat4->name="Ciencias Naturales";
+        $cat4->description="Ciencias naturales";
         $cat4->save();
 
         $cat5 = new Category();
-        $cat5->name="Nidea";
-        $cat5->description="delocosxd";
+        $cat5->name="Tecnologia y comunicacion";
+        $cat5->description="Informatica";
         $cat5->save();
+
+        $cat6 = new Category();
+        $cat6->name="Riesgo";
+        $cat6->description="xD";
+        $cat6->save();
     }
 }

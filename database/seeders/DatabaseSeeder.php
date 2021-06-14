@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Course_Category;
+use App\Models\EClass;
 use App\Models\Institute;
 use App\Models\Course;
 use Illuminate\Database\Seeder;
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(CurCatSeeder::class);
         $this->call(EditionSeeder::class);
+        $this->call(EClassSeeder::class);
     }
 }
