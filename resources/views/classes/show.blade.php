@@ -5,7 +5,7 @@
         <div class="h-100 p-5 border bg-light rounded-3 mt-5 mb-5" style="word-break: break-all">
             <h1>{{$clase->topic}}</h1>
             <p class="card-text"> <strong>Fecha de la clase: </strong>
-                {{$clase->class_date}}
+                {{date('d/m/Y', strtotime($clase->class_date))}}
             </p>
             <p class="fw-bold">
                 Notas de la clase:

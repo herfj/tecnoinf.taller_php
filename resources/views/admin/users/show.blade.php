@@ -14,7 +14,7 @@
             <span class="fw-bold">
             Fecha nac:
             </span>
-            {{$user->birthday_date}}
+            {{date('d/m/Y', strtotime($user->birthday_date))}}
         </p>
         <p>
             <span class="fw-bold">

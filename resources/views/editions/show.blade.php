@@ -6,10 +6,10 @@
              style="width:70%;margin-right:1.5%;word-break: break-all;">
             <h1>{{$edition->name}}</h1>
             <p class="card-text"><strong>Fecha de Inicio: </strong>
-                {{$edition->start_at}}
+                {{date('d/m/Y', strtotime($edition->start_at))}}
             </p>
             <p class="card-text"><strong>Fecha final: </strong>
-                {{$edition->end_at}}
+                {{date('d/m/Y', strtotime($edition->end_at))}}
             </p>
             <p class="card-text"> <strong>Cupos disponibles: </strong>
 
