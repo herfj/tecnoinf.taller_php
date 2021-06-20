@@ -1,72 +1,40 @@
-#  $admin = new User();
-        $admin->name="admin";
-        $admin->email="admin@admin.com";
-        $admin->password = Hash::make('_admin');
-        $admin->type_of_user="admin";
-        $admin->save();
+#  Usuarios
 
-        $teacher = new User();
-        $teacher->name="laucha";
-        $teacher->email="laucha@teacher.com";
-        $teacher->password = Hash::make('_teacher');
-        $teacher->type_of_user="teacher";
-        $teacher->save();
+```php
+    $admin->email="admin@admin.com";
+    $admin->password = Hash::make('_admin');
+    
+    //Teachers
+    $teacher->email="laucha@teacher.com";
+    $teacher->password = Hash::make('_teacher');
 
-        $teacher1 = new User();
-        $teacher1->name="jaco";
-        $teacher1->email="jaco@teacher.com";
-        $teacher1->password = Hash::make('_teacher');
-        $teacher1->type_of_user="teacher";
-        $teacher1->save();
+    $teacher1->email="jaco@teacher.com";
+    $teacher1->password = Hash::make('_teacher');
+    
+    $teacher2->email="tomba@teacher.com";
+    $teacher2->password = Hash::make('_teacher');
 
-        $teacher2 = new User();
-        $teacher2->name="tomba";
-        $teacher2->email="tomba@teacher.com";
-        $teacher2->password = Hash::make('_teacher');
-        $teacher2->type_of_user="teacher";
-        $teacher2->save();
+    $teacher3->email="cacique@teacher.com";
+    $teacher3->password = Hash::make('_teacher');
+    
+    //Students
+    $student->email="laucha@student.com";
+    $student->password = Hash::make('_student');
 
-        $teacher3 = new User();
-        $teacher3->name="cacique";
-        $teacher3->email="cacique@teacher.com";
-        $teacher3->password = Hash::make('_teacher');
-        $teacher3->type_of_user="teacher";
-        $teacher3->save();  $admin = new User();
-        $admin->name="admin";
-        $admin->email="admin@admin.com";
-        $admin->password = Hash::make('_admin');
-        $admin->type_of_user="admin";
-        $admin->save();
+    $student1->email="jaco@student.com";
+    $student1->password = Hash::make('_student');
 
-        $teacher = new User();
-        $teacher->name="laucha";
-        $teacher->email="laucha@teacher.com";
-        $teacher->password = Hash::make('_teacher');
-        $teacher->type_of_user="teacher";
-        $teacher->save();
+	$student2->email="tomba@student.com";
+    $student2->password = Hash::make('_student');
+        
+    $student3->email="cacique@student.com";
+    $student3->password = Hash::make('_student');
 
-        $teacher1 = new User();
-        $teacher1->name="jaco";
-        $teacher1->email="jaco@teacher.com";
-        $teacher1->password = Hash::make('_teacher');
-        $teacher1->type_of_user="teacher";
-        $teacher1->save();
+```
 
-        $teacher2 = new User();
-        $teacher2->name="tomba";
-        $teacher2->email="tomba@teacher.com";
-        $teacher2->password = Hash::make('_teacher');
-        $teacher2->type_of_user="teacher";
-        $teacher2->save();
 
-        $teacher3 = new User();
-        $teacher3->name="cacique";
-        $teacher3->email="cacique@teacher.com";
-        $teacher3->password = Hash::make('_teacher');
-        $teacher3->type_of_user="teacher";
-        $teacher3->save();
 
-Dependencias
+# Dependencias
 
 ---
 * Bootstrap 5.0
@@ -82,7 +50,22 @@ Dependencias
 
 ---
 Clona el proyecto, **renombra** el archivo **.env.example por .env**
-*EN EL .ENV CAMBIAR LAS VARIABLES SI TIENES PASSWORD!*
+*EN EL .ENV CAMBIAR LAS VARIABLES!*
+
+**.ENV** (Revisar que las variables)
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=taller_php_1
+DB_USERNAME=tu_usuario <---- INGRESA AHI TU USER DE BD
+DB_PASSWORD=tu_pass <----INGRESA AHI TU PASS DE BD
+
+```
+
+
+
 **Corre los siguientes comandos**
 
 ```bash
@@ -90,26 +73,17 @@ composer install
 composer dumpautoload -o
 npm install
 npm run dev
-php artisan migrate
 php artisan key:generate
 php artisan config:clear
 php artisan config:cache
-``` 
- 
+php artisan migrate:fresh --seed
+```
+
 ## Correr el server
 
 ---
 ```bash
 php artisan serve
-``` 
-#Comandos
-
----
-## Crear controlador
-
----
-```bash
-php artisan make:controller HomeController
 ```
 ## Limpiar base de datos y cargar datos de prueba
 
